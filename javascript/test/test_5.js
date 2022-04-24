@@ -28,3 +28,13 @@ function answer(str) {
 
 앞으로는 배열이 나오면 for of를 먼저 생각해야지..
  */
+
+function answer(str) {
+  let fix_str = "";
+
+  for (i of str.split(" ")) {
+    fix_str += i[0].toUpperCase() + i.slice(1) + " ";
+  }
+
+  return fix_str;
+}
