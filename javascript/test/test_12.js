@@ -33,3 +33,15 @@ for (let i = 0; i < dwarf.length; i++) {
     result.push(dwarf[i]);
   }
 }
+
+// 다른 방법
+
+for (let i = 0; i < dwarf.length; i++) {
+  if (dwarf[i] != res[0] && dwarf[i] != res[1]) {
+    result.push(dwarf[i]);
+    res[0] = i;
+    res[1] = j;
+    break;
+  }
+  if (res.length != 0) break; // 모두 찾으면 정지
+}
