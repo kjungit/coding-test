@@ -31,3 +31,16 @@ for (let i = 0; i < nums.length; i++) {
 - result[1] = nums[i] // 배열의 두번째 값에 저장한다.
 그렇게 첫번째 큰값과 두번째 큰값을 저장하여 출력하면 배열의 가장 큰 수 2개를 찾을 수 있다.
  */
+
+// 다른 방법
+
+let result = [];
+
+function sum(x, y) {
+  return y - x;
+}
+let res = nums.sort(sum);
+
+for (let i = 0; i < 2; i++) {
+  result.push(res[i]);
+}
