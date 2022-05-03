@@ -104,3 +104,14 @@ function solution(participant, completion) {
 
   return "nothing";
 }
+
+//sort, pop, while 사용한 풀이
+
+const solution = (p, c) => {
+  p.sort();
+  c.sort();
+  while (p.length) {
+    let pp = p.pop();
+    if (pp !== c.pop()) return pp;
+  }
+};
