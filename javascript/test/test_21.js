@@ -115,3 +115,15 @@ const solution = (p, c) => {
     if (pp !== c.pop()) return pp;
   }
 };
+
+// retuce,  find 를 사용한 풀이 // 가장 해시에 알맞은 답이라고 생각한다.
+function solution(participant, completion) {
+  var dic = completion.reduce(
+    (obj, t) => ((obj[t] = obj[t] ? obj[t] + 1 : 1), obj),
+    {}
+  );
+  return participant.find((t) => {
+    if (dic[t]) dic[t] = dic[t] - 1;
+    else return true;
+  });
+}
