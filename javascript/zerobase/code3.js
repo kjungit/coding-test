@@ -25,3 +25,33 @@ function answer(train) {
   }
   return true;
 }
+
+// 다른 풀이
+if (!Array.prototype.peek) {
+  Array.prototype.peek = function () {
+    return this[this.length - 1];
+  };
+}
+
+if (!Array.prototype.isEmpty) {
+  Array.prototype.isEmpty = function () {
+    return this.length === 0;
+  };
+}
+
+function answer(train) {
+  let stack = [];
+  let num = 0;
+
+  for (let i = 0; i < train.length; i++) {
+    while (stack.isEmpty() || stack.peek() < train[i]) {
+      stack.push(++num);
+    }
+    if (stack.peek() === train[i]) {
+      stack.pop();
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
