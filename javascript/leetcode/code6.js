@@ -29,3 +29,8 @@ var lengthOfLastWord = function (s) {
   last_str = last_str.pop();
   return last_str.length;
 };
+
+// 다른 풀이
+var lengthOfLastWord = function (s) {
+  return s.trim().split(" ").pop().length;
+};
