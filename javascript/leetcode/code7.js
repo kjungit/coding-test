@@ -15,8 +15,6 @@ Y   I   R
 
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
- 
-
 - 문제를 처음보고 2차원 배열로 접근을 해야하나 라는 생각이 먼저 들었다.
 
 - 그러나 2차원 배열을 사용할 필요가 없었다.
