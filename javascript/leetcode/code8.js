@@ -12,3 +12,14 @@ var reverse = function (x) {
   if (str < -2147483648 || str > 2147483647) return 0;
   return str;
 };
+
+// 다른 풀이
+var reverse = function (x) {
+  //문자열로 반전
+  let reversed = Math.abs(x).toString().split("").reverse().join("");
+  // reversed값이 uint32 범위 내에 있는지 확인하고 int32는 확인할 필요가 없다.
+  // 나중에 논리에서 뺴기 기호를 고려하기 때문에 양수만 확인한다.
+  if (reversed > 2 ** 31 - 1) return 0;
+  // 빼기 기호가 있으면 확인하고 추가해준다.
+  return Math.sign(x) * reversed;
+};
