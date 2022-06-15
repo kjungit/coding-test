@@ -38,3 +38,11 @@ let plusOne = function (digits) {
   digits.unshift(1);
   return digits;
 };
+
+// 다른 풀이
+var plusOne = function (digits) {
+  return (BigInt(digits.join("")) + BigInt(1))
+    .toString()
+    .split("")
+    .map((v) => Number(v));
+};
