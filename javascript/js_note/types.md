@@ -68,3 +68,98 @@ parseFloat((a + b).toFixed(1)); // 0.3
 let a = true;
 let b = false;
 ```
+
+### 4) Null
+
+존재하지 않는(nothing), 비어 있는(empty), 알 수 없는(unknown) 값을 명시적으로 나타냅니다.
+
+```js
+let age = null;
+```
+
+### 5) Undefined
+
+'값이 할당되지 않은 상태'를 나타낼 때 사용합니다.  
+변수는 선언했지만, 값을 할당하지 않았다면 해당 변수에 `undefined`가 자동으로 할당됩니다.
+
+```js
+let age;
+alert(age); // undefined
+```
+
+```js
+const user = {
+  name: "HEROPY",
+  age: 85,
+};
+
+console.log(user.name);
+console.log(user.age);
+console.log(user.email); // undefined
+console.log(user.abc); // undefined
+console.log(user.xyz); // undefined
+```
+
+### 6) 심볼
+
+심볼(symbol)은 변경이 불가한 데이터로,  
+유일한 식별자를 만들어 데이터를 보호하는 용도로 사용할 수 있습니다.  
+심볼에 추가하는 '설명'은 단순 디버깅을 위한 용도일 뿐, 심볼 값과는 관계가 없습니다.
+
+```js
+// Symbol('설명')
+const sKey = Symbol("Hello!");
+const user = {
+  key: "일반 정보!",
+  [sKey]: "민감한 정보!",
+};
+
+console.log(user.key); // '일반 정보!'
+console.log(user["key"]); // '일반 정보!'
+console.log(user[sKey]); // '민감한 정보!'
+console.log(user[Symbol("Hello!")]); // undefined
+```
+
+```js
+// keys.js
+export const birthKey = Symbol("Date of birth!");
+export const emailsKey = Symbol("Emails!");
+
+// heropy.js
+import { birthKey, emailsKey } from "./keys.js";
+
+export default {
+  firstName: "YoungWoong",
+  lastName: "Park",
+  age: 38,
+  [birthKey]: new Date(1985, 11, 16, 17, 30),
+  [emailsKey]: ["thesecon@gmail.com", "abc@naver.com"],
+};
+
+// main.js
+import heropy from "./heropy.js";
+import { birthKey, emailsKey } from "./keys.js";
+
+console.log(Object.keys(heropy));
+for (const key in heropy) {
+  console.log(heropy[key]);
+}
+
+console.log(heropy[birthKey]);
+console.log(heropy[emailsKey]);
+```
+
+### 7) BigInt
+
+BigInt는 길이 제한이 없는 정수(integer)입니다.  
+숫자(number) 데이터가 안정적으로 표시할 수 있는 최대치(`2^53 - 1`)보다 큰 정수를 표현할 수 있습니다.  
+정수 뒤에 `n`을 붙이거나 `BigInt()`를 호출해 생성합니다.
+
+```js
+console.log(1234567890123456789012345678901234567890);
+// 1.2345678901234568e+39
+
+console.log(1234567890123456789012345678901234567890n);
+console.log(BigInt("1234567890123456789012345678901234567890"));
+// 1234567890123456789012345678901234567890n
+```
