@@ -163,3 +163,134 @@ console.log(1234567890123456789012345678901234567890n);
 console.log(BigInt("1234567890123456789012345678901234567890"));
 // 1234567890123456789012345678901234567890n
 ```
+
+#### 형변환
+
+```js
+const a = 11n; // BigInt
+const b = 22; // 숫자
+
+// 숫자 => Bigint
+console.log(a + BigInt(b)); // 33n
+
+// Bigint => 숫자
+console.log(Number(a) + b); // 33
+```
+
+## 참조형
+
+### 1) 배열
+
+다음 예제의 `'Apple'`이나 `'Banana'` 같은 데이터를 배열의 아이템(Item) 혹은 요소(Element)라고 부릅니다.
+
+```js
+let fruits;
+
+// 생성자
+fruits = new Array("Apple", "Banana", "Cherry");
+
+// 리터럴
+fruits = ["Apple", "Banana", "Cherry"];
+
+// 배열의 아이템 인덱싱
+console.log(fruits[1]); // 'Banana'
+
+// 배열의 길이
+console.log(fruits.length); // 3
+
+// 첫 번째 아이템 인덱싱
+console.log(fruits[0]); // 'Apple'
+
+// 마지막 아이템 인덱싱
+console.log(fruits[fruits.length - 1]); // 'Cherry'
+```
+
+### 2) 객체
+
+Key:Value(속성:값) 형태로 더 복잡한 데이터 구조를 나타낼 때 사용합니다.
+
+```js
+let user;
+
+// 생성자1
+user = new Object();
+user.name = "HEROPY";
+user.age = 85;
+
+// 생성자2
+function User() {
+  this.name = "HEROPY";
+  this.age = 85;
+}
+user = new User();
+
+// 리터럴
+user = {
+  name: "HEROPY",
+  age: 85,
+};
+
+console.log(user.name); // 'HEROPY'
+console.log(user.age); // 85
+```
+
+#### 점 표기법과 대괄호 표기법
+
+객체의 멤버(속성과 메소드)를 점 표기법(Dot notation)과 대괄호 표기법(Bracket notation) 통해 접근할 수 있습니다.
+
+```js
+const user = {
+  name: "HEROPY",
+  age: 85,
+};
+
+// 점 표기법
+console.log(user.name); // 'HEROPY'
+console.log(user.age); // 85
+
+// 대괄호 표기법
+console.log(user["name"]); // 'HEROPY'
+console.log(user["age"]); // 85
+```
+
+속성의 이름은 고유하기 때문에 마지막에 작성된 속성으로 값이 할당됩니다.
+
+```js
+const user = {
+  name: "HEROPY",
+  age: 85, // X
+  age: 22,
+};
+
+console.log(user.age); // 22
+```
+
+점 표기법과 대괄호 표기법은 체이닝으로 작성할 수 있습니다.
+
+```js
+const userA = {
+  name: "HEROPY",
+  age: 85,
+};
+const userB = {
+  name: "Neo",
+  age: 22,
+  parent: userA,
+};
+
+console.log(userB.parent.name); // 점 표기법
+console.log(userB["parent"]["name"]); // 대괄호 표기법
+```
+
+속성 삭제
+
+```js
+const user = {
+  name: "HEROPY",
+  age: 85,
+};
+
+delete user.age;
+
+console.log(user); // { name: 'HEROPY' }
+```
