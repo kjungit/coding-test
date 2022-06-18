@@ -294,3 +294,117 @@ delete user.age;
 
 console.log(user); // { name: 'HEROPY' }
 ```
+
+### 3) 함수
+
+자바스크립트에서 함수(function)는 1급 객체(First-class object)로,  
+하나의 값으로 변수나 인수 혹은 반환이 가능합니다.
+
+```js
+function a() {
+  return 123;
+}
+
+console.log(typeof a); // function
+console.log(typeof a()); // number
+
+console.log(a); // f a() { return 123 }
+console.log(a()); // 123
+```
+
+```js
+const a = function () {
+  console.log("Aa!");
+};
+const b = function (c) {
+  console.log(c);
+  c();
+};
+b(a);
+```
+
+# 형변환
+
+함수와 연산자에 전달되는 값은 대부분 적절한 자료형으로 자동 변환됩니다.  
+이런 과정을 형변환(Type conversion)이라고 합니다.
+
+동등 연산자(`==`)는 두 피연산자의 값이 서로 같으면 참(`true`)을 반환합니다.  
+이때 두 피연산자의 타입이 서로 다르면, 비교를 위해 강제로 형변환이 일어납니다.  
+하지만 일치 연산자(`===`)는 타입의 변환 없이 두 피연산자의 값이 같고, 타입도 같아야만 참(`true`)을 반환합니다.
+
+> 일치 연산자는 값의 메모리 주소를 비교합니다.
+
+```js
+const a = 1;
+const b = "1";
+
+console.log(a === b); // false
+console.log(a == b); // true
+```
+
+다음 코드는 전부 `true`로 평가됩니다.
+
+```js
+123 == "123";
+0 == false;
+1 == true;
+"  " == false;
+```
+
+다음 코드는 전부 `false`로 평가됩니다.
+
+```js
+123 === "123";
+0 === false;
+1 === true;
+"  " === false;
+```
+
+# Truthy & Falsy
+
+## 참 같은 값(Truthy)
+
+문맥에서 `true`로 평가되는 값입니다.  
+다음은 모두 Truthy입니다.
+
+```js
+if (true)
+if ({})
+if ([])
+if (42)
+if ('0')
+if ('false')
+if (new Date())
+if (-42)
+if (12n)
+if (3.14)
+if (-3.14)
+if (Infinity)
+if (-Infinity)
+```
+
+## 거짓 같은 값(Falsy)
+
+문맥에서 `false`로 평가되는 값입니다.  
+다음은 모두 Falsy입니다.
+
+```js
+if (false)
+if (null)
+if (undefined)
+if (0)
+if (-0)
+if (NaN)
+if (0n)
+if ('')
+```
+
+```js
+const fruits = ["Apple", "Banana"];
+// 혹은
+// const fruits = []
+
+if (fruits.length) {
+  console.log("`fruits` 배열에는 과일 이름이 있습니다.!");
+}
+```
