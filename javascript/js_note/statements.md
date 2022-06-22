@@ -74,3 +74,56 @@ console.log(isPositive(10)); // '양수'
 console.log(isPositive(-2)); // '음수'
 console.log(isPositive(0)); // '0'
 ```
+
+## switch
+
+`switch`, `case`, `break`, `default` 키워드를 사용해 구문을 작성할 수 있습니다.  
+`break` 키워드는 Switch 조건문을 종료합니다.
+
+```js
+switch (조건) {
+  case 값1:
+    // 조건이 '값1'일 때 실행
+    break;
+  case 값2:
+    // 조건이 '값2'일 때 실행
+    break;
+  default:
+  // 조건이 '값1'도 '값2'도 아닐 때 실행
+}
+```
+
+```js
+function price(fruit) {
+  switch (fruit) {
+    case "Apple":
+      return 1000;
+    case "Banana":
+      return 1500;
+    case "Cherry":
+      return 2000;
+    default:
+      return 0;
+  }
+}
+
+console.log(price("Apple")); // 1000
+console.log(price("Cherry")); // 2000
+console.log(price("Hello")); // 0
+```
+
+Switch 조건문은 If 조건문으로 대체할 수 있습니다.
+
+```js
+function price(fruit) {
+  if (fruit === "Apple") {
+    return 1000;
+  } else if (fruit === "Banana") {
+    return 1500;
+  } else if (fruit === "Cherry") {
+    return 2000;
+  } else {
+    return 0;
+  }
+}
+```
