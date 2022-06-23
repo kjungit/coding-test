@@ -127,3 +127,59 @@ function price(fruit) {
   }
 }
 ```
+
+## for
+
+```js
+for (초기화; 조건; 증감) {
+  // 실행 코드
+}
+```
+
+```js
+for (let i = 0; i < 10; i += 1) {
+  console.log(i);
+}
+// 0
+// 1
+// 2
+// ...
+// 9
+```
+
+### break
+
+`break` 키워드가 실행되면, 전체 반복을 종료합니다.
+
+```js
+for (let i = 0; i < 10; i += 1) {
+  if (i > 5) {
+    break;
+  }
+  console.log(i);
+}
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+### continue
+
+`continue` 키워드가 실행되면, 현재 반복을 종료하고 다음 반복으로 넘어갑니다.
+
+```js
+for (let i = 0; i < 10; i += 1) {
+  if (i % 2 === 0) {
+    continue;
+  }
+  console.log(i);
+}
+// 1
+// 3
+// 5
+// 7
+// 9
+```
