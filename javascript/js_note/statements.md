@@ -183,3 +183,53 @@ for (let i = 0; i < 10; i += 1) {
 // 7
 // 9
 ```
+
+## for of
+
+Iterable object(반복 가능한 객체)를 반복.  
+`Array`, `Map`, `Set`, `String`, `TypedArray` 등..
+
+```js
+const users = [
+  {
+    name: "Heropy",
+    age: 85,
+  },
+  {
+    name: "Neo",
+    age: 22,
+  },
+  {
+    name: "Lewis",
+    age: 34,
+  },
+];
+
+for (const user of users) {
+  console.log(user);
+}
+// { name: 'Heropy', age: 85 }
+// { name: 'Neo', age: 22 }
+// { name: 'Lewis', age: 34 }
+```
+
+## for in
+
+객체 데이터를 반복.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+  isValid: true,
+  email: "thesecon@gmail.com",
+};
+
+for (const key in user) {
+  console.log(key, user[key]);
+}
+// name Heropy
+// age 85
+// isValid true
+// email thesecon@gmail.com
+```
