@@ -233,3 +233,56 @@ for (const key in user) {
 // isValid true
 // email thesecon@gmail.com
 ```
+
+## while
+
+조건이 참인 동안 반복 실행합니다.
+
+```js
+while (조건) {
+  //
+}
+```
+
+```js
+let n = 0;
+while (n < 4) {
+  console.log(n);
+  n += 1;
+}
+// 0
+// 1
+// 2
+// 3
+```
+
+## do while
+
+조건이 참인 동안 반복 실행합니다.
+
+```js
+do {} while (조건);
+```
+
+```js
+let n = 0;
+do {
+  console.log(n);
+  n += 1;
+} while (n < 4);
+// 0
+// 1
+// 2
+// 3
+```
+
+`do` 구문이 실행된 후 조건이 평가되기 때문에 조건이 거짓이라도 한 번은 실행됩니다.
+
+```js
+let n = 0;
+do {
+  console.log(n);
+  n += 1;
+} while (false);
+// 0
+```
