@@ -137,3 +137,56 @@ console.log(a < b); // true
 // 작거나 같음
 console.log(a <= b); // true
 ```
+
+## 논리(Logical)
+
+```js
+// AND 연산자
+const a = true;
+const b = false;
+
+if (a && b) {
+  console.log("모두 참!"); // 출력 X
+}
+
+console.log(a && b); // false
+```
+
+```js
+// OR 연산자
+const a = true;
+const b = false;
+
+if (a || b) {
+  console.log("하나 이상 참!"); // 출력 O
+}
+
+console.log(a || b); // true
+```
+
+AND 연산자는 왼쪽에서부터 가장 먼저 만나는 거짓(Falsy) 데이터를 반환합니다.  
+끝까지 거짓이 없으면 가장 오른쪽의 마지막 참(Truthy) 데이터를 반환합니다.
+
+```js
+// AND 연산자
+console.log(true && false); // false
+console.log(1 && 0); // 0
+console.log(1 && 2 && 0); // 0
+console.log(1 && 0 && 2); // 0
+console.log(0 && 1 && 2); // 0
+console.log("A" && "B" && ""); // ''
+console.log("A" && "B" && "C"); // 'C'
+```
+
+OR 연산자는 왼쪽에서부터 가장 먼저 만나는 참(Truthy) 데이터를 반환합니다.  
+끝까지 참이 없으면 가장 오른쪽의 마지막 거짓(Falsy) 데이터를 반환합니다.
+
+```js
+// OR 연산자
+console.log(false || true); // true
+console.log(0 || 1); // 1
+console.log(false || 0 || {}); // {}
+console.log(false || [] || null); // []
+console.log(function () {} || undefined || ""); // f () {}
+console.log(false || 0 || NaN); // NaN
+```
