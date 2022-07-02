@@ -190,3 +190,104 @@ console.log(false || [] || null); // []
 console.log(function () {} || undefined || ""); // f () {}
 console.log(false || 0 || NaN); // NaN
 ```
+
+## Nullish 병합(Nullish Coalescing)
+
+OR 연산자(`||`)는 왼쪽에서부터 거짓(Falsy)를 만나면 다음으로 넘어가지만, `0`이나 `''`(빈 문자) 값을 유효 값으로 사용하는 경우 원치 않는 결과가 발생할 수 있습니다.  
+이때 연산자(`??`)를 사용하면, Nullish(`null`과 `undefined`)를 만났을 때만 다음으로 넘어가기 때문에 유용합니다.
+
+```js
+const n = 0;
+
+// OR 연산자
+const num1 = n || 7;
+console.log(num1); // 7
+
+// Nullish 병합 연산자
+const num2 = n ?? 7;
+console.log(num2); // 0
+```
+
+```js
+console.log(null ?? 1); // 1
+console.log(undefined ?? 2); // 2
+console.log(null ?? undefined); // undefined
+console.log(null ?? 1 ?? 2); // 1
+console.log(false ?? 1 ?? 2); // false
+console.log(0 ?? 1 ?? 2); // 0
+```
+
+## 삼항(Ternary)
+
+```js
+const a = 1;
+
+if (a < 2) {
+  console.log("참!");
+} else {
+  console.log("거짓..");
+}
+
+// 조건 ? 값1 : 값2
+console.log(a < 2 ? "참!" : "거짓..");
+```
+
+```js
+function getAlert(message) {
+  return message ? message : "메시지가 존재하지 않습니다!";
+}
+
+console.log(getAlert("안녕하세요~")); // '안녕하세요~'
+console.log(getAlert()); // '메시지가 존재하지 않습니다!'
+```
+
+## 전개 연산자(Spread Operator)
+
+배열이나 객체의 아이템이나 속성을 전개(확장)할 수 있습니다.  
+얕은 복사에 유용합니다.
+
+#### 배열 병합
+
+```js
+const a = [1, 2, 3];
+const b = [4, 5, 6];
+const c = a.concat(b);
+const d = [...a, ...b];
+
+console.log(c); // [1, 2, 3, 4, 5, 6]
+console.log(d); // [1, 2, 3, 4, 5, 6]
+```
+
+#### 객체 병합
+
+```js
+const a = { x: 1, y: 2 };
+const b = { y: 3, z: 4 };
+const c = Object.assign({}, a, b);
+const d = { ...a, ...b };
+
+console.log(c); // { x: 1, y: 3, z: 4 }
+console.log(d); // { x: 1, y: 3, z: 4 }
+```
+
+#### 인수 전개
+
+```js
+const a = [1, 2, 3];
+function fn(x, y, z) {
+  console.log(x, y, z);
+}
+fn(...a);
+// 1 2 3
+```
+
+#### 나머지 매개변수
+
+```js
+const a = [1, 2, 3, 4, 5, 6];
+function fn(x, y, ...rest) {
+  console.log(x, y, rest);
+}
+fn(...a);
+// 1 2 [3, 4, 5, 6]
+```
