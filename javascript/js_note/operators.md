@@ -291,3 +291,51 @@ function fn(x, y, ...rest) {
 fn(...a);
 // 1 2 [3, 4, 5, 6]
 ```
+
+## 구조 분해 할당(Destructuring assignment)
+
+배열이나 객체의 구조에 맞게 바로 개별 변수에 값을 할당하는 방법입니다.
+
+### 배열 구조 분해(Array destructuring)
+
+#### 기본
+
+```js
+const arr = [1, 2, 3];
+const [a, b, c] = arr;
+
+console.log(a, b, c);
+// 1 2 3
+```
+
+#### 선언과 분리
+
+```js
+const arr = [1, 2, 3];
+let a, b, c;
+[a, b, c] = arr;
+
+console.log(a, b, c);
+// 1 2 3
+```
+
+#### 기본값
+
+```js
+const arr = [, , 3];
+const [a = 0, b, c] = arr;
+
+console.log(a, b, c);
+// 0 undefined 3
+```
+
+#### 변수 값 교환
+
+```js
+let a = 1;
+let b = 2;
+[b, a] = [a, b];
+
+console.log(a, b);
+// 2 1
+```
