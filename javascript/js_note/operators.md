@@ -339,3 +339,86 @@ let b = 2;
 console.log(a, b);
 // 2 1
 ```
+
+#### 반환 값 무시
+
+```js
+const arr = [1, 2, 3];
+const [, , c] = arr;
+
+console.log(c);
+// 3
+```
+
+#### 나머지 할당
+
+```js
+const arr = [1, 2, 3];
+const [a, ...rest] = arr;
+
+console.log(a, rest);
+// 1 [2, 3]
+```
+
+### 객체 구조 분해(Object destructuring)
+
+#### 기본
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+const { a, b, c } = obj;
+
+console.log(a, b, c);
+// 1 2 3
+```
+
+#### 선언과 분리
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+let a, b, c;
+({ a, b, c } = obj); // 소괄호 묶음!
+
+console.log(a, b, c);
+// 1 2 3
+```
+
+#### 기본값
+
+```js
+const obj = { c: 3 };
+const { a = 0, b, c } = obj;
+
+console.log(a, b, c);
+// 0 undefined 3
+```
+
+#### 변수명 변경
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+const { a: x, b: y, c: z } = obj;
+
+console.log(x, y, z);
+// 1 2 3
+```
+
+#### 기본값 + 변수명 변경
+
+```js
+const obj = { c: 3 };
+const { a: x = 0, b: y, c: z } = obj;
+
+console.log(x, y, z);
+// 0 undefined 3
+```
+
+#### 나머지 할당
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+const { a, ...rest } = obj;
+
+console.log(a, rest);
+// 1 { b: 2, c: 3 }
+```
