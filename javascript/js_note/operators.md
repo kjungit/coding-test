@@ -422,3 +422,37 @@ const { a, ...rest } = obj;
 console.log(a, rest);
 // 1 { b: 2, c: 3 }
 ```
+
+## 선택적 체이닝(Optional Chaining)
+
+점 표기법에 `?`를 추가해 `?.`로 사용하면 객체 속성이 없는 경우도 에러 없이 접근할 수 있습니다.  
+필요한 곳에서 사용하되, 추적이 어려워질 수 있으니 남용하지 않도록 주의해야 합니다.
+
+```js
+let user = null;
+
+console.log(user); // null
+console.log(user?.name); // undefined
+```
+
+```js
+const userA = {
+  name: "HEROPY",
+  age: 85,
+  address: {
+    country: "Korea",
+    city: "Seoul",
+  },
+};
+const userB = {
+  name: "Neo",
+  age: 22,
+};
+
+function getCity(user) {
+  return user.address?.city || "주소 없음.";
+}
+
+console.log(getCity(userA)); // 'Seoul'
+console.log(getCity(userB)); // '주소 없음.'
+```
