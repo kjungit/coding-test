@@ -228,3 +228,58 @@ const i = () => {
 };
 const j = () => [1, 2, 3];
 ```
+
+## 즉시실행함수(IIFE)
+
+즉시실행함수(IIFE, Immediately-Invoked Function Expression)는 함수 정의와 동시에 바로 실행하는 문법입니다.  
+전역 범위 변수 오염을 방지하거나 함수 외부에서 내부 변수에 접근하는 것을 차단하는 목적 등으로 활용할 수 있습니다.
+
+```js
+const a = 7;
+
+// 함수 정의(표현)
+const double = () => {
+  console.log(a * 2);
+};
+// 함수 실행(호출)
+double();
+
+// 함수 정의 및 실행
+(() => {
+  console.log(a * 2);
+})();
+```
+
+사용 가능한 패턴은 다음과 같습니다.  
+화살표 함수는 한 가지 패턴만 사용 가능합니다.
+
+```js
+(() => {})(); // (F)()
+(function () {})(); // (F)()
+(function () {})(); // (F())
+!(function () {})(); // !F()
++(function () {})(); // +F()
+```
+
+외부에서는 즉시실행함수 내부 변수에 접근할 수 없습니다.
+
+```js
+const a = 7;
+
+(() => {
+  const b = 3;
+  console.log(a, b);
+})();
+
+console.log(a, b); // Error!
+```
+
+외부 변수를 다른 이름으로 사용할 수 있습니다.  
+이 방식은 난독화 코드를 만들 때 사용하기도 합니다.
+
+```js
+((a, b) => {
+  console.log(a.innerWidth);
+  console.log(b.body);
+})(window, document);
+```
