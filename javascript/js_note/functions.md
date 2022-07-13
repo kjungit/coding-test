@@ -283,3 +283,59 @@ console.log(a, b); // Error!
   console.log(b.body);
 })(window, document);
 ```
+
+## 콜백(Callback)
+
+콜백(Callback)이란, 함수의 인수(값)로 사용되는 함수를 말합니다.
+
+```js
+const a = (callback) => {
+  callback();
+  console.log("A");
+};
+const b = () => {
+  console.log("B");
+};
+
+a(b);
+// 'B'
+// 'A'
+```
+
+```js
+function sum(a, b, callback) {
+  // 1초 후 실행
+  setTimeout(() => {
+    callback(a + b);
+  }, 1000);
+}
+sum(3, 7, function (value) {
+  console.log(value); // 10
+});
+```
+
+다음은 콜백을 활용한 이미지 로드 예제입니다.
+
+```html
+<div class="container">
+  <h1>Loading...</h1>
+</div>
+```
+
+```js
+const loadImage = (url, cb) => {
+  const imgEl = document.createElement("img");
+  imgEl.src = url;
+  imgEl.addEventListener("load", () => {
+    setTimeout(() => {
+      cb(imgEl);
+    }, 1000);
+  });
+};
+
+const containerEl = document.querySelector(".container");
+loadImage("https://www.gstatic.com/webp/gallery/4.jpg", (imgEl) => {
+  containerEl.innerHTML = "";
+  containerEl.append(imgEl);
+});
+```
