@@ -339,3 +339,36 @@ loadImage("https://www.gstatic.com/webp/gallery/4.jpg", (imgEl) => {
   containerEl.append(imgEl);
 });
 ```
+
+## 재귀(Recursive)
+
+재귀란 함수가 자기 내부에서 자신을 다시 호출해 실행하는 방법을 말합니다.
+
+```js
+let i = 0;
+const a = () => {
+  console.log("A");
+  i += 1;
+  if (i < 4) {
+    a();
+  }
+};
+
+a();
+```
+
+```js
+const userA = { name: "A", parent: null };
+const userB = { name: "B", parent: userA };
+const userC = { name: "C", parent: userB };
+const userD = { name: "D", parent: userC };
+
+const getRootUser = (user) => {
+  if (user.parent) {
+    return getRootUser(user.parent);
+  }
+  return user;
+};
+
+console.log(getRootUser(userD));
+```
