@@ -372,3 +372,21 @@ const getRootUser = (user) => {
 
 console.log(getRootUser(userD));
 ```
+
+## 호출 스케줄링(Scheduling a function call)
+
+```js
+const hello = () => {
+  console.log("Hello~");
+};
+
+const timeout = setTimeout(hello, 3000);
+// const timeout = setInterval(hello, 1000)
+const btnEl = document.querySelector("h1");
+
+btnEl.addEventListener("click", () => {
+  console.log("Clear!");
+  clearTimeout(timeout);
+  // clearInterval(timeout)
+});
+```
