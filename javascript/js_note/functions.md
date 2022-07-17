@@ -390,3 +390,91 @@ btnEl.addEventListener("click", () => {
   // clearInterval(timeout)
 });
 ```
+
+## this
+
+`this`는 '일반 함수'와 '화살표 함수'에 따라 다르게 정의됩니다.  
+<strong>일반 함수</strong>는 호출 위치에서 정의되고,  
+<strong>화살표 함수</strong>는 this가 자신이 선언된 렉시컬(함수) 범위에서 정의됩니다.
+
+```js
+function user() {
+  this.firstName = "Neo";
+  this.lastName = "Anderson";
+
+  return {
+    firstName: "Heropy",
+    lastName: "Park",
+    age: 85,
+    getFullName: function () {
+      return `${this.firstName} ${this.lastName}`;
+    },
+  };
+}
+
+const u = user();
+console.log(u.getFullName());
+```
+
+```js
+let newC;
+let newD;
+
+// 객체 리터럴 선언!
+const literal = {
+  a: 1,
+  b: 2,
+  // 일반 함수는 호출 위치에서 따라 this 정의!
+  c: function () {
+    console.log(this.a);
+  },
+  // 화살표 함수는 this가 자신이 선언된 렉시컬(함수) 범위에서 this 정의!
+  d: () => {
+    console.log(this.a);
+  },
+};
+literal.c(); // 1
+literal.d(); // undefined
+newC = literal.c;
+newD = literal.d;
+newC(); // undefined
+newD(); // undefined
+newC.call(literal); // 1
+newD.call(literal); // undefined
+
+// 인스턴스 생성!
+const instance = new (function () {
+  this.a = 3;
+  this.b = 4;
+  // 일반 함수는 호출 위치에서 따라 this 정의!
+  this.c = function () {
+    console.log(this.a);
+  };
+  // 화살표 함수는 this가 자신이 선언된 렉시컬(함수) 범위에서 this 정의!
+  this.d = () => {
+    console.log(this.a);
+  };
+})();
+instance.c(); // 3
+instance.d(); // 3
+newC = instance.c;
+newD = instance.d;
+newC(); // undefined
+newD(); // 3
+newC.call(instance); // 3
+newD.call(instance); // 3
+```
+
+```js
+const timer = {
+  title: "TIMER!",
+  timeout() {
+    console.log(this.title);
+    setTimeout(function () {
+      console.log(this.title);
+    }, 1000);
+  },
+};
+
+timer.timeout();
+```
