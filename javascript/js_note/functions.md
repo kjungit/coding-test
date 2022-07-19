@@ -500,3 +500,27 @@ console.log(amy.getName.apply(heropy, [85]));
 const heropysGetName = amy.getName.bind(heropy);
 console.log(heropysGetName(85));
 ```
+
+## Function 클래스
+
+`Function` 클래스로 함수를 생성할 수도 있습니다.
+
+```js
+const sum = new Function(
+  "a",
+  "b",
+  `
+  console.log(a)
+  console.log(b)
+  return a + b
+`
+);
+console.log(sum);
+console.log(sum(1, 2));
+```
+
+```js
+const str = "console.log(123)"; // 서버에서 동적으로 전달받은 문자열(코드 형태)
+const fn = new Function(str);
+fn();
+```
