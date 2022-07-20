@@ -145,4 +145,11 @@ class User {
     return `${this.firstName} ${this.lastName}`;
   };
 }
+
+const heropy = new User("Heropy", "Park");
+const neo = new User("Neo", "Anderson");
+
+console.log(heropy.getFullName()); // Heropy Park
+console.log(neo.getFullName()); // Neo Anderson
+console.log(heropy.getFullName === neo.getFullName); // false
 ```
