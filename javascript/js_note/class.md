@@ -153,3 +153,22 @@ console.log(heropy.getFullName()); // Heropy Park
 console.log(neo.getFullName()); // Neo Anderson
 console.log(heropy.getFullName === neo.getFullName); // false
 ```
+
+## Getter, Setter
+
+```js
+class User {
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  // Getter
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  // Setter
+  set fullName(value) {
+    [this.firstName, this.lastName] = value.split(" ");
+  }
+}
+```
