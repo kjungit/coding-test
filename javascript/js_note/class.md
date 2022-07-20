@@ -132,3 +132,17 @@ console.log(heropy.getFullName()); // Heropy Park
 console.log(neo.getFullName()); // Neo Anderson
 console.log(heropy.getFullName === neo.getFullName); // true
 ```
+
+### 화살표 함수 메소드
+
+```js
+class User {
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  getFullName = () => {
+    return `${this.firstName} ${this.lastName}`;
+  };
+}
+```
