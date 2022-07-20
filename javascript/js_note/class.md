@@ -171,4 +171,12 @@ class User {
     [this.firstName, this.lastName] = value.split(" ");
   }
 }
+const heropy = new User("Heropy", "Park");
+const neo = new User("Neo", "Anderson");
+
+console.log(heropy.fullName); // 'Heropy Park'
+console.log(neo.fullName); // 'Neo Anderson'
+
+heropy.fullName = "Lewis Yang";
+neo.fullName = "Smith John";
 ```
