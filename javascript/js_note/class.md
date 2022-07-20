@@ -179,4 +179,10 @@ console.log(neo.fullName); // 'Neo Anderson'
 
 heropy.fullName = "Lewis Yang";
 neo.fullName = "Smith John";
+
+console.log(heropy.firstName, heropy.lastName); // 'Lewis', 'Yang'
+console.log(heropy.fullName); // 'Lewis Yang'
+
+console.log(neo.firstName, neo.lastName); // 'Smith', 'John'
+console.log(neo.fullName); // 'Smith John'
 ```
