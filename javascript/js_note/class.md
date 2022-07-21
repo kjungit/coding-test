@@ -186,3 +186,15 @@ console.log(heropy.fullName); // 'Lewis Yang'
 console.log(neo.firstName, neo.lastName); // 'Smith', 'John'
 console.log(neo.fullName); // 'Smith John'
 ```
+
+## 정적 메소드(Static methods)
+
+정적 메소드는 주로 클래스의 유틸리티(보조) 함수를 만들 때 사용합니다.  
+인스턴스와는 연결되지 않으며, 클래스 자체에서 호출해야 합니다.
+
+`isArray mdn` 구글 검색!
+
+```js
+Array.isArray([1, 2, 3]); // true
+Array.isArray({ a: 1 }); // false
+```
