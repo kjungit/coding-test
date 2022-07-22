@@ -198,3 +198,20 @@ console.log(neo.fullName); // 'Smith John'
 Array.isArray([1, 2, 3]); // true
 Array.isArray({ a: 1 }); // false
 ```
+
+```js
+class User {
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  static isUser(user) {
+    // if (user.firstName && user.lastName) return true
+    // return false
+    return !!user.firstName && !!user.lastName;
+  }
+}
+```
