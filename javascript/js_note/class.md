@@ -227,3 +227,18 @@ console.log(User.isUser(heropy)); // true
 console.log(User.isUser(neo)); // true
 console.log(User.isUser(lewis)); // false
 ```
+
+프로토타입 기반의 정적 메소드
+
+```js
+function User(first, last) {
+  this.firstName = first;
+  this.lastName = last;
+}
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
+User.isUser = function (user) {
+  return !!user.firstName && !!user.lastName;
+};
+```
