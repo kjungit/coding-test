@@ -242,3 +242,25 @@ User.isUser = function (user) {
   return !!user.firstName && !!user.lastName;
 };
 ```
+
+## 상속(Inheritance)
+
+```js
+// 운송수단
+class Vehicle {
+  constructor(acceleration = 1) {
+    this.speed = 0;
+    this.acceleration = acceleration;
+  }
+  accelerate() {
+    this.speed += this.acceleration;
+  }
+  decelerate() {
+    if (this.speed <= 0) {
+      console.log("정지!");
+      return;
+    }
+    this.speed -= this.acceleration;
+  }
+}
+```
