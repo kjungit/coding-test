@@ -332,3 +332,48 @@ console.log(boat instanceof Bicycle); // false
 console.log(boat.constructor === Boat); // true
 console.log(boat.constructor === Vehicle); // false
 ```
+
+### 클래스와 프로토타입의 상속 비교
+
+클래스 기반의 상속
+
+```js
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+}
+
+class Admin extends User {
+  constructor(name) {
+    super(name);
+  }
+}
+
+const admin = new Admin("Heropy");
+console.log(admin.getName()); // 'Heropy'
+```
+
+프로토타입 기반의 상속
+
+```js
+function User(name) {
+  this.name = name;
+}
+User.prototype.getName = function () {
+  return this.name;
+};
+
+function Admin(name) {
+  User.call(this, name);
+}
+// Object.create()는 지정된 프로토타입 객체와 연결된 새로운 객체를 생성합니다.
+Admin.prototype = Object.create(User.prototype);
+Admin.prototype.constructor = Admin;
+
+const admin = new Admin("Heropy");
+console.log(admin.getName()); // 'Heropy'
+```
