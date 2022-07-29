@@ -377,3 +377,102 @@ Admin.prototype.constructor = Admin;
 const admin = new Admin("Heropy");
 console.log(admin.getName()); // 'Heropy'
 ```
+
+### 클래스와 프로토타입의 상속 비교
+
+클래스 기반의 상속
+
+```js
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+}
+
+class Admin extends User {
+  constructor(name) {
+    super(name);
+  }
+}
+
+const admin = new Admin("Heropy");
+console.log(admin.getName()); // 'Heropy'
+```
+
+프로토타입 기반의 상속
+
+```js
+function User(name) {
+  this.name = name;
+}
+User.prototype.getName = function () {
+  return this.name;
+};
+
+function Admin(name) {
+  User.call(this, name);
+}
+// Object.create()는 지정된 프로토타입 객체와 연결된 새로운 객체를 생성합니다.
+Admin.prototype = Object.create(User.prototype);
+Admin.prototype.constructor = Admin;
+
+const admin = new Admin("Heropy");
+console.log(admin.getName()); // 'Heropy'
+```
+
+### constructor, instanceof
+
+```js
+const fruits = ["Apple", "Banana"];
+// const fruits = new Array('Apple', 'Banana')
+
+console.log(fruits.constructor === Array);
+console.log(fruits instanceof Array);
+```
+
+```js
+class A {
+  constructor() {}
+}
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+class C extends B {
+  constructor() {
+    super();
+  }
+}
+
+const a = new A();
+const b = new B();
+const c = new C();
+
+console.log(a instanceof A); // true
+console.log(a instanceof B); // false
+console.log(a instanceof C); // false
+
+console.log(b instanceof A); // true
+console.log(b instanceof B); // true
+console.log(b instanceof C); // false
+
+console.log(c instanceof A); // true
+console.log(c instanceof B); // true
+console.log(c instanceof C); // true
+
+console.log(a.constructor === A); // true
+console.log(a.constructor === B); // false
+console.log(a.constructor === C); // false
+
+console.log(b.constructor === A); // false
+console.log(b.constructor === B); // true
+console.log(b.constructor === C); // false
+
+console.log(c.constructor === A); // false
+console.log(c.constructor === B); // false
+console.log(c.constructor === C); // true
+```
