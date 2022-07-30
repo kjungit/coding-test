@@ -476,3 +476,47 @@ console.log(c.constructor === A); // false
 console.log(c.constructor === B); // false
 console.log(c.constructor === C); // true
 ```
+
+## Fonty 예제
+
+```js
+class Fonty {
+  #options;
+  constructor(selector, customOptions) {
+    this.#options = {
+      fontSize: "16px",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontFamily: "sans-serif",
+      lineHeight: "1.4",
+    };
+    this._allowedProperties = [
+      "fontSize",
+      "fontStyle",
+      "fontWeight",
+      "fontFamily",
+      "lineHeight",
+    ];
+    this._selector = selector;
+    this.setStyle(customOptions);
+  }
+  setStyle(customOptions) {
+    // 옵션 병합
+    this._allowedProperties.forEach((name) => {
+      this.#options[name] = customOptions[name] || this.#options[name];
+    });
+    // 요소 검색
+    this._els = document.querySelectorAll(this._selector);
+    this._els.forEach((el) => {
+      Object.assign(el.style, this.#options);
+    });
+  }
+  // Getter
+  get options() {
+    return this.#options;
+  }
+  static getFamilies() {
+    return ["serif", "sans-serif", "monospace", "cursive"];
+  }
+}
+```
