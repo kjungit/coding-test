@@ -519,4 +519,29 @@ class Fonty {
     return ["serif", "sans-serif", "monospace", "cursive"];
   }
 }
+
+const f1 = new Fonty(".text1", {
+  fontSize: "40px",
+  fontWeight: "700",
+});
+const f2 = new Fonty(".text2", {
+  fontSize: "30px",
+  fontFamily: "cursive",
+  fontStyle: "italic",
+});
+
+console.log(Fonty.getFamilies());
+
+const h1El = document.querySelector("h1");
+h1El.addEventListener("click", () => {
+  f1.setStyle({
+    fontSize: "24px",
+    fontFamily: "serif",
+    lineHeight: 1,
+  });
+  f2.setStyle({
+    fontSize: "99px",
+  });
+  console.log(f2.options);
+});
 ```
