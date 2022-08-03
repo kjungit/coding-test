@@ -32,3 +32,16 @@ const str = "Hello world!";
 
 console.log(str.includes("Hello", 1)); // false
 ```
+
+### .indexOf()
+
+대상 문자에서 주어진 문자와 일치하는 첫 번째 인덱스(숫자)를 반환합니다.  
+일치하는 문자가 없으면 `-1`을 반환합니다.
+
+```js
+const str = "Hello world!";
+//           012345678901
+
+console.log(str.indexOf("world")); // 6
+console.log(str.indexOf("HEROPY")); // -1
+```
