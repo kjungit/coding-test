@@ -45,3 +45,13 @@ const str = "Hello world!";
 console.log(str.indexOf("world")); // 6
 console.log(str.indexOf("HEROPY")); // -1
 ```
+
+### .match()
+
+대상 문자에서 주어진 정규식(RegExp)과 일치하는 배열을 반환합니다.
+
+```js
+const str = "Hello world!";
+
+console.log(str.match(/^.*(?=\s)/gi)); // ['Hello']
+```
