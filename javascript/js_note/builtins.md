@@ -67,3 +67,15 @@ const str = "1234567";
 console.log(str.padStart(10, "0")); // '0001234567'
 console.log(str); // '1234567'
 ```
+
+### .padEnd()
+
+대상 문자의 길이(length)가 지정된 길이보다 작으면,  
+주어진 문자을 지정된 길이가 될 때까지 **끝에** 붙여 새로운 문자를 반환합니다.
+
+```js
+const str = "1234567";
+
+console.log(str.padEnd(10, "0")); // '1234500000'
+console.log(str); // '1234567'
+```
