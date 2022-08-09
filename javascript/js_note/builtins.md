@@ -102,3 +102,19 @@ const str = "Hello world!";
 
 console.log(str.search(/\s/)); // 5
 ```
+
+### .slice()
+
+대상 문자의 일부를 추출해 새로운 문자를 반환합니다.  
+두 번째 인수 직전까지 추출하고, 두 번째 인수를 생략하면 대상 문자의 끝까지 추출합니다.
+
+```js
+const str = "Hello world!";
+//           012345678901
+//          -210987654321
+
+console.log(str.slice(0, 5)); // 'Hello'
+console.log(str.slice(6, -1)); // 'world'
+console.log(str.slice(6)); // 'world!'
+console.log(str); // 'Hello world!'
+```
