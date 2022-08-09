@@ -79,3 +79,15 @@ const str = "1234567";
 console.log(str.padEnd(10, "0")); // '1234500000'
 console.log(str); // '1234567'
 ```
+
+### .replace()
+
+대상 문자에서 패턴(문자, 정규식)과 일치하는 부분을 교체한 새로운 문자를 반환합니다.
+
+```js
+const str = "Hello, Hello?!";
+
+console.log(str.replace("Hello", "Hi")); // 'Hi, Hello?!'
+console.log(str.replace(/Hello/g, "Hi")); // 'Hi, Hi?!'
+console.log(str); // 'Hello, Hello?!'
+```
