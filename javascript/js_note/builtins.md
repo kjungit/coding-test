@@ -91,3 +91,14 @@ console.log(str.replace("Hello", "Hi")); // 'Hi, Hello?!'
 console.log(str.replace(/Hello/g, "Hi")); // 'Hi, Hi?!'
 console.log(str); // 'Hello, Hello?!'
 ```
+
+### .search()
+
+대상 문자에서 정규식과 일치하는 첫 번째 인덱스(숫자)를 반환합니다.
+
+```js
+const str = "Hello world!";
+//           012345678901
+
+console.log(str.search(/\s/)); // 5
+```
