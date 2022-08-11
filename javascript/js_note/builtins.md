@@ -118,3 +118,19 @@ console.log(str.slice(6, -1)); // 'world'
 console.log(str.slice(6)); // 'world!'
 console.log(str); // 'Hello world!'
 ```
+
+### .split()
+
+대상 문자를 주어진 구분자로 나눠 배열로 반환합니다.
+
+```js
+const str = "Apple, Banana, Cherry";
+
+console.log(str.split(", ")); // ['Apple', 'Banana', 'Cherry']
+```
+
+```js
+const str = "Apple";
+
+console.log(str.split("").reverse().join("")); // elppA
+```
