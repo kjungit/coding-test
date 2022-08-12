@@ -134,3 +134,17 @@ const str = "Apple";
 
 console.log(str.split("").reverse().join("")); // elppA
 ```
+
+### .startsWith()
+
+대상 문자가 주어진 문자로 시작하는지 여부를 반환합니다.  
+탐색할 시작 위치를 지정할 수 있습니다.
+
+```js
+const str = "Hello world!";
+//           012345678901
+
+console.log(str.startsWith("Hello")); // true
+console.log(str.startsWith("world")); // false
+console.log(str.startsWith("world", 6)); // true
+```
