@@ -148,3 +148,14 @@ console.log(str.startsWith("Hello")); // true
 console.log(str.startsWith("world")); // false
 console.log(str.startsWith("world", 6)); // true
 ```
+
+### .toLowerCase()
+
+대상 문자를 영어 소문자로 변환해 새로운 문자로 반환합니다.
+
+```js
+const str = "Apple, Banana, Cherry";
+
+console.log(str.toLowerCase()); // 'apple, banana, cherry'
+console.log(str); // 'Apple, Banana, Cherry'
+```
