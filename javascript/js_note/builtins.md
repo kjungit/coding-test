@@ -159,3 +159,14 @@ const str = "Apple, Banana, Cherry";
 console.log(str.toLowerCase()); // 'apple, banana, cherry'
 console.log(str); // 'Apple, Banana, Cherry'
 ```
+
+### .toUpperCase()
+
+대상 문자를 영어 대문자로 변환해 새로운 문자로 반환합니다.
+
+```js
+const str = "Apple, Banana, Cherry";
+
+console.log(str.toUpperCase()); // 'APPLE, BANANA, CHERRY'
+console.log(str); // 'Apple, Banana, Cherry'
+```
