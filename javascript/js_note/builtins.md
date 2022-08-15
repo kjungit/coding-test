@@ -170,3 +170,14 @@ const str = "Apple, Banana, Cherry";
 console.log(str.toUpperCase()); // 'APPLE, BANANA, CHERRY'
 console.log(str); // 'Apple, Banana, Cherry'
 ```
+
+### .trim()
+
+대상 문자의 앞뒤 공백 문자(space, tab 등)를 제거한 새로운 문자를 반환합니다.
+
+```js
+const str = "   Hello world!  ";
+
+console.log(str.trim()); // 'Hello world!!'
+console.log(str); // '   Hello world!  '
+```
