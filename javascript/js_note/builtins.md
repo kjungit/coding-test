@@ -181,3 +181,18 @@ const str = "   Hello world!  ";
 console.log(str.trim()); // 'Hello world!!'
 console.log(str); // '   Hello world!  '
 ```
+
+---
+
+## Number
+
+### .toFixed()
+
+숫자를 지정된 고정 소수점 표기(자릿수)까지 표현하는 문자로 반환합니다.
+
+```js
+const num = 3.1415926535;
+
+console.log(num.toFixed(2)); // '3.14'
+console.log(parseFloat(num.toFixed(2))); // 3.14
+```
