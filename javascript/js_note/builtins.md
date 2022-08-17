@@ -196,3 +196,14 @@ const num = 3.1415926535;
 console.log(num.toFixed(2)); // '3.14'
 console.log(parseFloat(num.toFixed(2))); // 3.14
 ```
+
+### .toLocaleString()
+
+숫자를 현지 언어 형식의 문자로 반환합니다.
+
+```js
+const num = 1000000;
+
+console.log(num.toLocaleString()); // '1,000,000'
+console.log(`${num.toLocaleString()}원`); // '1,000,000원'
+```
