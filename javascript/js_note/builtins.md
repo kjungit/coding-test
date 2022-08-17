@@ -207,3 +207,15 @@ const num = 1000000;
 console.log(num.toLocaleString()); // '1,000,000'
 console.log(`${num.toLocaleString()}원`); // '1,000,000원'
 ```
+
+### Number.isInteger()
+
+숫자가 정수(integer)인지 확인합니다.
+
+```js
+const num = 123;
+const pi = 3.14;
+
+console.log(Number.isInteger(num)); // true
+console.log(Number.isInteger(pi)); // false
+```
