@@ -219,3 +219,20 @@ const pi = 3.14;
 console.log(Number.isInteger(num)); // true
 console.log(Number.isInteger(pi)); // false
 ```
+
+### Number.isNaN() 또는 isNaN()
+
+주어진 값이 `NaN`인지 확인합니다.  
+`isNaN()`보다 더 엄격한 버전으로 ES6에 추가된 `Number.isNaN()` 사용을 권장합니다.
+
+```js
+const num1 = NaN;
+const num2 = 123;
+const str = "Hello world";
+const nul = null;
+
+console.log(Number.isNaN(num1)); // true
+console.log(Number.isNaN(num2)); // false
+console.log(Number.isNaN(str)); // false
+console.log(Number.isNaN(nul)); // false
+```
