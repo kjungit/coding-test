@@ -236,3 +236,22 @@ console.log(Number.isNaN(num2)); // false
 console.log(Number.isNaN(str)); // false
 console.log(Number.isNaN(nul)); // false
 ```
+
+### Number.parseInt() 또는 parseInt()
+
+주어진 값(숫자, 문자)을 파싱해 특정 진수(radix)의 정수로 반환합니다.  
+`Number.parseInt()`는 ES6에서 전역 객체의 모듈화를 위해 추가됐습니다.  
+10진수가 기본값이 아니기 때문에 꼭 명시하는 것이 좋습니다!
+
+```js
+const str = "3.1415926535";
+
+// 10진수 정수로 반환!
+console.log(Number.parseInt(str, 10)); // 3
+console.log(Number.parseInt(num, 10)); // 3
+```
+
+다음과 같은 경우 `NaN`를 반환합니다.
+
+- 진수 값이 `2`보다 작거나 `36`보다 큰 경우
+- 공백이 아닌 첫 문자를 숫자로 변환할 수 없는 경우
