@@ -255,3 +255,16 @@ console.log(Number.parseInt(num, 10)); // 3
 
 - 진수 값이 `2`보다 작거나 `36`보다 큰 경우
 - 공백이 아닌 첫 문자를 숫자로 변환할 수 없는 경우
+
+### Number.parseFloat() 또는 parseFloat()
+
+주어진 값(숫자, 문자)을 파싱해 부동소수점 실수로 반환(숫자)합니다.  
+`Number.parseFloat()`는 ES6에서 전역 객체의 모듈화를 위해 추가됐습니다.
+
+```js
+const str = "3.1415926535";
+const num = 3.1415926535;
+
+console.log(Number.parseFloat(str)); // 3.1415926535
+console.log(Number.parseFloat(num)); // 3.1415926535
+```
