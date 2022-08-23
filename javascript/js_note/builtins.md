@@ -268,3 +268,16 @@ const num = 3.1415926535;
 console.log(Number.parseFloat(str)); // 3.1415926535
 console.log(Number.parseFloat(num)); // 3.1415926535
 ```
+
+---
+
+## Math
+
+### Math.abs()
+
+주어진 숫자의 절댓값을 반환합니다.
+
+```js
+console.log(Math.abs(2)); // 2
+console.log(Math.abs(-2)); // 2
+```
