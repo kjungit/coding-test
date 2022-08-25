@@ -281,3 +281,19 @@ console.log(Number.parseFloat(num)); // 3.1415926535
 console.log(Math.abs(2)); // 2
 console.log(Math.abs(-2)); // 2
 ```
+
+### Math.ceil()
+
+주어진 숫자를 올림해 정수를 반환합니다.
+
+```js
+console.log(Math.ceil(3.1415926535)); // 4
+```
+
+### Math.floor()
+
+주어진 숫자를 내림해 정수를 반환합니다.
+
+```js
+console.log(Math.floor(3.1415926535)); // 3
+```
