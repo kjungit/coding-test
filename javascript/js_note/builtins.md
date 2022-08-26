@@ -297,3 +297,15 @@ console.log(Math.ceil(3.1415926535)); // 4
 ```js
 console.log(Math.floor(3.1415926535)); // 3
 ```
+
+### Math.round()
+
+주어진 숫자를 반올림해 정수를 반환합니다.
+
+```js
+const num1 = 3.141;
+const num2 = 3.768;
+
+console.log(Math.round(num1)); // 3
+console.log(Math.round(num2)); // 4
+```
