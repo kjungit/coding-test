@@ -309,3 +309,19 @@ const num2 = 3.768;
 console.log(Math.round(num1)); // 3
 console.log(Math.round(num2)); // 4
 ```
+
+### Math.max()
+
+주어진 숫자 중 가장 큰 숫자를 반환합니다.
+
+```js
+console.log(Math.max(1, 22, 38, 192)); // 192
+```
+
+### Math.min()
+
+주어진 숫자 중 가장 작은 숫자를 반환합니다.
+
+```js
+console.log(Math.min(1, 22, 38, 192)); // 1
+```
