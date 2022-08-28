@@ -325,3 +325,13 @@ console.log(Math.max(1, 22, 38, 192)); // 192
 ```js
 console.log(Math.min(1, 22, 38, 192)); // 1
 ```
+
+### Math.pow()
+
+주어진 숫자의 거듭제곱한 값을 반환합니다.
+
+```js
+console.log(Math.pow(4, 2)); // 16
+console.log(Math.pow(7, 2)); // 49
+console.log(Math.pow(10, 3)); // 1000
+```
