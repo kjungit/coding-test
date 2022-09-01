@@ -363,3 +363,28 @@ console.log(random(101, 1000)); // 101~999
 // console.log(Math.floor(ran * (max - min))) // 소수점 내림!
 // console.log(Math.floor(ran * (max - min)) + min) // 범위의 최솟값 만들기!
 ```
+
+---
+
+## Date
+
+### 개요
+
+`new Date()`를 통해 반환되는 인스턴스를 '타임스탬프'(Timestamp)라고 합니다.
+
+```js
+const date = new Date();
+console.log(date);
+// 타임스탬프 - 'Wed Sep 28 2022 10:45:41 GMT+0900 (한국 표준시)'
+
+console.log(typeof date); // 'object'
+console.log(typeof "Wed Sep 28 2022 10:45:41 GMT+0900 (한국 표준시)"); // 'string'
+```
+
+```js
+const d1 = new Date(2022, 11, 16, 12, 57, 30);
+console.log(d1); // 'Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)'
+
+const d2 = new Date("Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)");
+console.log(d2); // 'Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)'
+```
