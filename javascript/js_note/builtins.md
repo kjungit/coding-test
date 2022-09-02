@@ -388,3 +388,17 @@ console.log(d1); // 'Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)'
 const d2 = new Date("Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)");
 console.log(d2); // 'Fri Dec 16 2022 12:57:30 GMT+0900 (한국 표준시)'
 ```
+
+### .getFullYear()와 .setFullYear()
+
+날짜 인스턴스의 '연도'를 반환하거나 지정합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getFullYear()); // 2022
+
+date.setFullYear(2023);
+console.log(date.getFullYear()); // 2023
+console.log(date); // 'Thu Sep 28 2023 14:23:23 GMT+0900 (한국 표준시)'
+```
