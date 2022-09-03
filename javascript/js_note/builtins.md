@@ -402,3 +402,19 @@ date.setFullYear(2023);
 console.log(date.getFullYear()); // 2023
 console.log(date); // 'Thu Sep 28 2023 14:23:23 GMT+0900 (한국 표준시)'
 ```
+
+### .getMonth()와 .setMonth()
+
+날짜 인스턴스의 '월'을 반환하거나 지정합니다.  
+0부터 시작(Zero-based numbering)합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getMonth()); // 8
+console.log(date); // 'Wed Sep 28 2022 15:26:49 GMT+0900 (한국 표준시)'
+
+date.setMonth(0);
+console.log(date.getMonth()); // 0
+console.log(date); // 'Fri Jan 28 2022 14:26:33 GMT+0900 (한국 표준시)'
+```
