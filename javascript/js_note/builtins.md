@@ -418,3 +418,18 @@ date.setMonth(0);
 console.log(date.getMonth()); // 0
 console.log(date); // 'Fri Jan 28 2022 14:26:33 GMT+0900 (한국 표준시)'
 ```
+
+### .getDate()와 .setDate()
+
+날짜 인스턴스의 '일'을 반환하거나 지정합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getDate()); // 28
+console.log(date); // 'Wed Sep 28 2022 15:35:14 GMT+0900 (한국 표준시)'
+
+date.setDate(11);
+console.log(date.getDate()); // 11
+console.log(date); // 'Mon Sep 11 2022 12:03:40 GMT+0900 (한국 표준시)'
+```
