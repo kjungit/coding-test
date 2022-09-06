@@ -448,3 +448,18 @@ date.setHours(7);
 console.log(date.getHours()); // 7
 console.log(date); // 'Wed Dec 21 2022 07:23:51 GMT+0900 (한국 표준시)'
 ```
+
+### .getMinutes()와 .setMinutes()
+
+날짜 인스턴스의 '분'을 반환하거나 지정합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getMinutes()); // 47
+console.log(date); // 'Wed Sep 28 2022 15:47:33 GMT+0900 (한국 표준시)'
+
+date.setMinutes(2);
+console.log(date.getMinutes()); // 2
+console.log(date); // 'Wed Sep 28 2022 15:02:33 GMT+0900 (한국 표준시)'
+```
