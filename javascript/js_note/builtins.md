@@ -463,3 +463,18 @@ date.setMinutes(2);
 console.log(date.getMinutes()); // 2
 console.log(date); // 'Wed Sep 28 2022 15:02:33 GMT+0900 (한국 표준시)'
 ```
+
+### .getSeconds()와 .setSeconds()
+
+날짜 인스턴스의 '초'를 반환하거나 지정합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getSeconds()); // 13
+console.log(date); // 'Wed Sep 28 2022 15:50:13 GMT+0900 (한국 표준시)'
+
+date.setSeconds(57);
+console.log(date.getSeconds()); // 57
+console.log(date); // 'Wed Sep 28 2022 15:50:57 GMT+0900 (한국 표준시)'
+```
