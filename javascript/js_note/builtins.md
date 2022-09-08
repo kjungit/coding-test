@@ -478,3 +478,34 @@ date.setSeconds(57);
 console.log(date.getSeconds()); // 57
 console.log(date); // 'Wed Sep 28 2022 15:50:57 GMT+0900 (한국 표준시)'
 ```
+
+### .getDay()
+
+날짜 인스턴스의 '요일'을 반환합니다.
+
+```js
+const date = new Date();
+const day = date.getDay();
+
+console.log(day); // 3
+console.log(getDayKo(day)); // '수요일'
+
+function getDayKo(day) {
+  switch (day) {
+    case 0:
+      return "일요일";
+    case 1:
+      return "월요일";
+    case 2:
+      return "화요일";
+    case 3:
+      return "수요일";
+    case 4:
+      return "목요일";
+    case 5:
+      return "금요일";
+    case 6:
+      return "토요일";
+  }
+}
+```
