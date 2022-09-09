@@ -509,3 +509,33 @@ function getDayKo(day) {
   }
 }
 ```
+
+### .getTime()와 .setTime()
+
+유닉스 타임(UNIX Time)으로부터 날짜 인스턴스의 경과한 시간을 '밀리초(ms)'로 반환하거나 지정합니다.  
+유닉스 타임이란 1970.01.01 00:00:00 시간을 의미합니다.
+
+```js
+const date = new Date();
+
+console.log(date.getTime()); // 1664343325817
+console.log(date); // 'Wed Sep 28 2022 15:58:05 GMT+0900 (한국 표준시)'
+
+date.setTime(1700000000000);
+console.log(date.getTime()); // 1700000000000
+console.log(date); // 'Wed Nov 15 2023 07:13:20 GMT+0900 (한국 표준시)'
+```
+
+```js
+Date.prototype.isAfter = function (date) {
+  const a = this.getTime();
+  const b = date.getTime();
+  return a > b;
+};
+
+const d1 = new Date("Sat Jan 01 2022 00:00:00 GMT+0900 (한국 표준시)");
+const d2 = new Date("Sun Jan 01 2023 00:00:00 GMT+0900 (한국 표준시)");
+
+console.log(d1.isAfter(d2)); // false
+console.log(d2.isAfter(d1)); // true
+```
