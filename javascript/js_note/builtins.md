@@ -539,3 +539,17 @@ const d2 = new Date("Sun Jan 01 2023 00:00:00 GMT+0900 (한국 표준시)");
 console.log(d1.isAfter(d2)); // false
 console.log(d2.isAfter(d1)); // true
 ```
+
+### .toUTCString()
+
+날짜 인스턴스의 협정 세계시(UTC)를 반환합니다.  
+협정 세계시(UTC) 혹은 그리니치 평균시(GMT)는 영국 런던 기점의 기준시입니다.  
+한국은 UTC 기준보다 9시간 빠릅니다.
+
+```js
+console.log(new Date());
+// Tue Oct 25 2022 16:29:54 GMT+0900 (한국 표준시)
+
+console.log(new Date().toUTCString());
+// Tue, 25 Oct 2022 07:29:54 GMT
+```
