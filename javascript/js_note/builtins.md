@@ -553,3 +553,16 @@ console.log(new Date());
 console.log(new Date().toUTCString());
 // Tue, 25 Oct 2022 07:29:54 GMT
 ```
+
+### .toISOString()
+
+날짜 인스턴스의 협정 세계시(UTC)를 'ISO 8601' 포맷으로 반환합니다.  
+'ISO 8601'는 날짜와 시간을 표현하는 국제 표준 규격입니다.
+
+```js
+console.log(new Date());
+// Tue Oct 25 2022 16:29:54 GMT+0900 (한국 표준시)
+
+console.log(new Date().toISOString());
+// 2022-10-25T07:29:54.000Z
+```
