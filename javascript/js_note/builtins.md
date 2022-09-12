@@ -566,3 +566,30 @@ console.log(new Date());
 console.log(new Date().toISOString());
 // 2022-10-25T07:29:54.000Z
 ```
+
+### Date.now()
+
+유닉스 타임(UNIX Time)으로부터 메소드가 호출될 때의 경과한 시간을 '밀리초(ms)'로 반환합니다.
+
+```js
+const time = new Date().getTime();
+console.log(Date.now()); // 1664349597861
+console.log(time); // 1664349597861
+
+setTimeout(() => {
+  console.log(Date.now()); // 1664349598861
+  console.log(time); // 1664349597861
+}, 1000);
+```
+
+```js
+// 현재 시간을 기준, 서로 같음!
+new Date().getTime();
+Date.now();
+
+// getTime 메소드는 특정 날짜(시간)의 경과 시간을 확인 가능!
+new Date("Sat Jan 01 2022 00:00:00 GMT+0900 (한국 표준시)").getTime();
+Date.now();
+```
+
+---
