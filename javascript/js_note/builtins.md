@@ -593,3 +593,30 @@ Date.now();
 ```
 
 ---
+
+## Array
+
+### .length
+
+배열의 길이(숫자)를 반환합니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+console.log(arr.length); // 3
+```
+
+### .at()
+
+대상 배열을 인덱싱합니다.  
+음수 값을 사용하면 뒤에서부터 인덱싱합니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+console.log(arr[0]); // 'A'
+console.log(arr.at(0)); // 'A'
+
+console.log(arr[arr.length - 1]); // 'C'
+console.log(arr.at(-1)); // 'C'
+```
