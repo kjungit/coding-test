@@ -620,3 +620,18 @@ console.log(arr.at(0)); // 'A'
 console.log(arr[arr.length - 1]); // 'C'
 console.log(arr.at(-1)); // 'C'
 ```
+
+### .concat()
+
+대상 배열과 주어진 배열을 병합해 새로운 배열을 반환합니다.
+
+```js
+const arr1 = ["A", "B", "C"];
+const arr2 = ["D", "E", "F"];
+const arr3 = arr1.concat(arr2);
+// const arr3 = [...arr1, ...arr2]
+
+console.log(arr1); // ['A', 'B', 'C']
+console.log(arr2); // ['D', 'E', 'F']
+console.log(arr3); // ['A', 'B', 'C', 'D', 'E', 'F']
+```
