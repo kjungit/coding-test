@@ -635,3 +635,27 @@ console.log(arr1); // ['A', 'B', 'C']
 console.log(arr2); // ['D', 'E', 'F']
 console.log(arr3); // ['A', 'B', 'C', 'D', 'E', 'F']
 ```
+
+### .every()
+
+대상 배열의 모든 요소가 콜백 테스트를 통과(참(Truthy)을 반환)하는지 확인합니다.  
+최초로 테스트가 실패하면, 이후 콜백은 실행되지 않고 `false`를 반환합니다.
+
+```js
+const arr = [1, 2, 3, 4];
+const isValid = arr.every((item) => item < 5);
+
+console.log(isValid); // true
+```
+
+```js
+const arr = [1, 2, 3, 4];
+const isValid = arr.every((item) => {
+  console.log(item);
+  return item < 3;
+});
+
+// 1
+// 2
+console.log(isValid); // false
+```
