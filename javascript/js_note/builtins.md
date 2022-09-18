@@ -659,3 +659,25 @@ const isValid = arr.every((item) => {
 // 2
 console.log(isValid); // false
 ```
+
+### .filter()
+
+대상 배열에서 콜백 테스트를 통과하는 모든 요소로 새로운 배열을 만들어 반환합니다.  
+만약 모든 요소가 테스트를 통과하지 못하면 빈 배열을 반환합니다.
+
+```js
+const numbers = [1, 20, 7, 9, 104, 0, 58];
+const filteredNumbers = numbers.filter((number) => number < 30);
+
+console.log(filteredNumbers); // [1, 20, 7, 9, 0]
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+const adults = users.filter((user) => user.age >= 19);
+console.log(adults); // [ Neo객체, Amy객체 ]
+```
