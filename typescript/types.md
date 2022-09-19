@@ -57,3 +57,34 @@ let nan: number = NaN;
 let isBoolean: boolean;
 let isDone: boolean = false;
 ```
+
+### Null, Undefined
+
+`null`과 `undefined`는 모든 타입의 하위 타입이지만, 엄격한 타입스크립트 문법에서 직접 할당은 가능하지 않습니다.  
+그러나 `void`에는 `undefined`를 할당할 수 있습니다.
+
+```typescript
+let str: string = null; // Error!
+let num: number = undefined; // Error!
+let boo: boolean = null; // Error!
+let arr: number[] = undefined; // Error!
+let obj: object = null; // Error!
+let voi1: void = null; // Error!
+let voi2: void = undefined; // OK!
+```
+
+변수를 초기화하지 않으면, `undefined`가 되기 때문에 초기화 후 사용해야 합니다.
+
+```typescript
+let str: string;
+let num: number;
+console.log(str); // Error! - 변수가 할당되기 전에 사용되었습니다.(2454)
+console.log(num); // Error! - 변수가 할당되기 전에 사용되었습니다.(2454)
+```
+
+```ts
+let str: string = "";
+let num: number = 0;
+console.log(str); // OK!
+console.log(num); // OK!
+```
