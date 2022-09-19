@@ -48,3 +48,12 @@ let octal: number = 0o744; // 484
 let infinity: number = Infinity;
 let nan: number = NaN;
 ```
+
+### Boolean
+
+`true` | `false` 값을 나타냅니다.
+
+```typescript
+let isBoolean: boolean;
+let isDone: boolean = false;
+```
