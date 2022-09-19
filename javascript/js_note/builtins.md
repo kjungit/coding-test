@@ -681,3 +681,27 @@ const users = [
 const adults = users.filter((user) => user.age >= 19);
 console.log(adults); // [ Neo객체, Amy객체 ]
 ```
+
+### .find()
+
+대상 배열에서 콜백 테스트를 통과하는 첫 번째 요소를 반환합니다.  
+최초로 테스트가 통과하면, 이후 콜백은 실행되지 않습니다.  
+모든 테스트가 실패하면, `undefined`를 반환합니다.
+
+```js
+const arr = [5, 8, 130, 12, 44];
+const foundItem = arr.find((item) => item > 10);
+
+console.log(foundItem); // 130
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+const foundUser = users.find((user) => user.name === "Amy");
+
+console.log(foundUser); // { name: 'Amy', age: 22 }
+```
