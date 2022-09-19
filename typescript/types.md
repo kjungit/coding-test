@@ -21,3 +21,16 @@ function sum(a: number, b: number): number {
 }
 const res: string = sum(1, 2); // TypeError!
 ```
+
+## 타입 선언
+
+### String
+
+문자열을 나타냅니다.
+
+```typescript
+let red: string = "Red";
+let green: string = "Green";
+let myColor: string = `My color is ${red}.`;
+let yourColor: string = "Your color is" + green;
+```
