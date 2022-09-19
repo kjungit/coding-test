@@ -88,3 +88,69 @@ let num: number = 0;
 console.log(str); // OK!
 console.log(num); // OK!
 ```
+
+### Array
+
+일반 배열을 나타냅니다.  
+배열은 두 가지 방법으로 타입을 선언할 수 있습니다.
+
+```typescript
+const fruits: string[] = ["Apple", "Banana", "Cherry"];
+const numbers: number[] = [1, 2, 3, 4, 5, 6, 7];
+```
+
+```typescript
+// 문자열만 가지는 배열
+const fruits: string[] = ["Apple", "Banana", "Mango"];
+// Or
+const fruits: Array<string> = ["Apple", "Banana", "Mango"];
+
+// 숫자만 가지는 배열
+const oneToSeven: number[] = [1, 2, 3, 4, 5, 6, 7];
+// Or
+const oneToSeven: Array<number> = [1, 2, 3, 4, 5, 6, 7];
+```
+
+유니언 타입(다중 타입)의 '문자열과 숫자를 동시에 가지는 배열'도 선언할 수 있습니다.
+
+```typescript
+const array: (string | number)[] = ["Apple", 1, 2, "Banana", "Mango", 3];
+// Or
+const array: Array<string | number> = ["Apple", 1, 2, "Banana", "Mango", 3];
+```
+
+인터페이스(Interface)나 커스텀 타입(Type)을 사용할 수도 있습니다.
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+let userArr: User[] = [
+  {
+    name: "Neo",
+    age: 85,
+    isValid: true,
+  },
+  {
+    name: "Lewis",
+    age: 52,
+    isValid: false,
+  },
+  {
+    name: "Evan",
+    age: 36,
+    isValid: true,
+  },
+];
+```
+
+다음과 같이 특정한 값으로 타입을 대신할 수도 있습니다.
+
+```typescript
+let array: 10[];
+array = [10];
+array.push(10); // OK!
+array.push(11); // Error!
+```
