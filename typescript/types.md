@@ -34,3 +34,17 @@ let green: string = "Green";
 let myColor: string = `My color is ${red}.`;
 let yourColor: string = "Your color is" + green;
 ```
+
+### Number
+
+모든 부동 소수점 값을 사용할 수 있습니다.
+
+```typescript
+let integer: number = 6;
+let float: number = 3.14;
+let hex: number = 0xf00d; // 61453
+let binary: number = 0b1010; // 10
+let octal: number = 0o744; // 484
+let infinity: number = Infinity;
+let nan: number = NaN;
+```
