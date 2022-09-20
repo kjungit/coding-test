@@ -705,3 +705,18 @@ const foundUser = users.find((user) => user.name === "Amy");
 
 console.log(foundUser); // { name: 'Amy', age: 22 }
 ```
+
+### .findIndex()
+
+대상 배열에서 콜백 테스트를 통과하는 첫 번째 요소의 인덱스를 반환합니다.  
+최초로 테스트가 통과하면, 이후 콜백은 실행되지 않습니다.  
+모든 테스트가 실패하면, `-1`을 반환합니다.
+
+```js
+const arr = [5, 8, 130, 12, 44];
+//           0  1  2    3   4
+
+const index = arr.findIndex((item) => item > 10);
+
+console.log(index); // 2
+```
