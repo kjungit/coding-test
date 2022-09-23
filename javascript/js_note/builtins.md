@@ -720,3 +720,29 @@ const index = arr.findIndex((item) => item > 10);
 
 console.log(index); // 2
 ```
+
+### .flat()
+
+대상 배열의 모든 하위 배열을 지정한 깊이(Depth)까지 이어붙인 새로운 배열을 반환합니다.  
+깊이의 기본값은 `1`입니다.
+
+```js
+const arr = [1, 2, [3, 4]];
+
+console.log(arr.flat()); // [1, 2, 3, 4]
+```
+
+```js
+const arr = [1, 2, [3, 4, [5, 6]]];
+
+console.log(arr.flat()); // [1, 2, 3, 4, [5, 6]]
+console.log(arr.flat(2)); // [1, 2, 3, 4, 5, 6]
+```
+
+```js
+const arr = [1, 2, [3, 4, [5, 6, [7, 8]]]];
+
+console.log(arr.flat()); // [1, 2, 3, 4, [5, 6, [7, 8]]]
+console.log(arr.flat(2)); // [1, 2, 3, 4, 5, 6, [7, 8]]
+console.log(arr.flat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
