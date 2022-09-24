@@ -154,3 +154,56 @@ array = [10];
 array.push(10); // OK!
 array.push(11); // Error!
 ```
+
+### Tuple
+
+튜플 타입은 배열과 매우 유사합니다.  
+튜플은 <strong>정해진 타입의 고정된 길이(length) 배열</strong>을 표현합니다.
+
+```typescript
+let tuple: [string, number];
+tuple = ["a", 1];
+tuple = ["a", 1, 2]; // Error!
+tuple = [1, "a"]; // Error!
+```
+
+다음과 같이 데이터를 개별 변수로 지정하지 않고, 단일 튜플 타입으로 지정해 사용할 수 있습니다.
+
+```typescript
+// Variables
+let userId: number = 1234;
+let userName: string = "HEROPY";
+let isValid: boolean = true;
+
+// Tuple
+let user: [number, string, boolean] = [1234, "HEROPY", true];
+console.log(user[0]); // 1234
+console.log(user[1]); // 'HEROPY'
+console.log(user[2]); // true
+```
+
+나아가 위 방식을 활용해 다음과 같은 튜플 타입의 배열(2차원 배열)을 사용할 수 있습니다.
+
+```typescript
+let users: [number, string, boolean][];
+// Or
+// let users: Array<[number, string, boolean]>
+
+users = [
+  [1, "Neo", true],
+  [2, "Evan", false],
+  [3, "Lewis", true],
+];
+```
+
+튜플은 <strong>정해진 타입의 고정된 길이 배열</strong>을 표현하지만, 이는 할당(Assign)에 국한됩니다.  
+`.push()`나 `.splice()` 등을 통해 값을 넣는 행위는 막을 수 없습니다.
+
+```typescript
+let tuple: [string, number];
+tuple = ["a", 1];
+tuple = ["b", 2];
+tuple.push(3);
+console.log(tuple); // ['b', 2, 3]
+tuple.push(true); // Error - TS2345: Argument of type 'true' is not assignable to parameter of type 'string | number'.
+```
