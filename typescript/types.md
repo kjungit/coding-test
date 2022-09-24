@@ -235,3 +235,52 @@ const any1: any = u; // OK!
 const num1: number = u; // Error! - unknown은 any를 제외한 다른 타입에 할당할 수 없습니다.
 const num2: number = u as number; // 타입을 단언하면 할당할 수 있습니다.
 ```
+
+### Object
+
+기본적으로 `typeof` 연산자가 `"object"`로 반환하는 모든 타입을 나타냅니다.
+
+> 엄격한 타입 검사(`strict: true`)에서는 `null`을 포함하지 않습니다.
+
+```typescript
+let obj: object = {};
+let arr: object = [];
+let func: object = function () {};
+let date: object = new Date();
+// ...
+```
+
+보다 정확한 타입 지정을 위해 다음과 같이 객체 속성(Properties)들에 대한 타입을 개별적으로 지정할 수 있습니다.
+
+```typescript
+let userA: { name: string; age: number } = {
+  name: "HEROPY",
+  age: 123,
+};
+
+let userB: { name: string; age: number } = {
+  name: "HEROPY",
+  age: false, // Error
+  email: "thesecon@gmail.com", // Error
+};
+```
+
+타입 재사용하기 위해, `interface`나 `type`을 사용하는 것도 좋습니다.
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+}
+
+const userA: User = {
+  name: "HEROPY",
+  age: 123,
+};
+
+const userB: User = {
+  name: "HEROPY",
+  age: false, // Error
+  email: "thesecon@gmail.com", // Error
+};
+```
