@@ -207,3 +207,16 @@ tuple.push(3);
 console.log(tuple); // ['b', 2, 3]
 tuple.push(true); // Error - TS2345: Argument of type 'true' is not assignable to parameter of type 'string | number'.
 ```
+
+### Any
+
+Any는 모든 타입을 의미합니다.  
+따라서 일반적인 자바스크립트 변수와 동일하게 어떤 타입의 값도 할당할 수 있습니다.  
+외부 자원을 활용해 개발할 때 불가피하게 타입을 단언할 수 없는 경우 유용할 수 있지만, 되도록 사용하지 않는 것이 좋습니다.
+
+```typescript
+let any: any = 123;
+any = "Hello world";
+any = {};
+any = null;
+```
