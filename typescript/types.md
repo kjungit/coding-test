@@ -220,3 +220,18 @@ any = "Hello world";
 any = {};
 any = null;
 ```
+
+### Unknown
+
+Unknown은 '알 수 없는 타입'을 의미합니다.  
+Any와 같이 Unknown에는 어떤 타입의 값도 할당할 수 있지만, Unknown을 다른 타입에는 할당할 수 없습니다.
+
+```typescript
+let a: any = 123;
+let u: unknown = 123;
+
+const boo1: boolean = a; // 모든 타입(any)은 어디든 할당할 수 있습니다.
+const any1: any = u; // OK!
+const num1: number = u; // Error! - unknown은 any를 제외한 다른 타입에 할당할 수 없습니다.
+const num2: number = u as number; // 타입을 단언하면 할당할 수 있습니다.
+```
