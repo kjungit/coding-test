@@ -746,3 +746,37 @@ console.log(arr.flat()); // [1, 2, 3, 4, [5, 6, [7, 8]]]
 console.log(arr.flat(2)); // [1, 2, 3, 4, 5, 6, [7, 8]]
 console.log(arr.flat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8]
 ```
+
+### .forEach()
+
+대상 배열의 길이만큼 주어진 콜백을 실행합니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+arr.forEach((item) => console.log(item));
+
+for (let i = 0; i < arr.length; i += 1) {
+  console.log(arr[i]);
+}
+
+// 'A'
+// 'B'
+// 'C'
+```
+
+`.forEach()`는 중간에 반복을 멈출 수 없습니다.  
+반복을 멈출 수 있어야 한다면, `for` 반복문을 사용해야 합니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+for (let i = 0; i < arr.length; i += 1) {
+  if (i > 1) {
+    break;
+  }
+  console.log(arr[i]);
+}
+// 'A'
+// 'B'
+```
