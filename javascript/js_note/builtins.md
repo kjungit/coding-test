@@ -780,3 +780,32 @@ for (let i = 0; i < arr.length; i += 1) {
 // 'A'
 // 'B'
 ```
+
+### .includes()
+
+대상 배열이 특정 요소를 포함하고 있는지 확인합니다.
+
+```js
+const arr = [1, 2, 3];
+
+console.log(arr.includes(2)); // true
+```
+
+```js
+const fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.includes("Apple")); // true
+console.log(fruits.includes("cherry")); // false
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+console.log(users.includes({ name: "Neo", age: 85 })); // false
+
+const neo = users[0];
+console.log(users.includes(neo)); // true
+```
