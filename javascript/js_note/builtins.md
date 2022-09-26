@@ -809,3 +809,15 @@ console.log(users.includes({ name: "Neo", age: 85 })); // false
 const neo = users[0];
 console.log(users.includes(neo)); // true
 ```
+
+### .join()
+
+대상 배열의 모든 요소를 구분자로 연결한 문자를 반환합니다.
+
+```js
+const fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.join()); // 'Apple,Banana,Cherry'
+console.log(fruits.join(", ")); // 'Apple, Banana, Cherry'
+console.log(fruits.join("/")); // 'Apple/Banana/Cherry'
+```
