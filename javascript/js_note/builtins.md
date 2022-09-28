@@ -821,3 +821,32 @@ console.log(fruits.join()); // 'Apple,Banana,Cherry'
 console.log(fruits.join(", ")); // 'Apple, Banana, Cherry'
 console.log(fruits.join("/")); // 'Apple/Banana/Cherry'
 ```
+
+### .map()
+
+대상 배열의 길이만큼 주어진 콜백을 실행하고,  
+콜백의 반환 값을 모아 새로운 배열을 반환합니다.
+
+```js
+const numbers = [1, 2, 3, 4];
+const newNumbers = numbers.map((item) => item * 2);
+
+console.log(newNumbers); // [2, 4, 6, 8]
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+const newUsers = users.map((user) => ({
+  ...user,
+  isValid: true,
+  email: null,
+}));
+const userNames = users.map((user) => user.name);
+
+console.log(newUsers); // [{ name: 'Neo', age: 85, isValid: true, email: null }, ...]
+console.log(userNames); // ['Neo', 'Amy', 'Lewis']
+```
