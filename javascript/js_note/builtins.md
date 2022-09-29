@@ -850,3 +850,15 @@ const userNames = users.map((user) => user.name);
 console.log(newUsers); // [{ name: 'Neo', age: 85, isValid: true, email: null }, ...]
 console.log(userNames); // ['Neo', 'Amy', 'Lewis']
 ```
+
+### .pop()
+
+대상 배열에서 마지막 요소를 제거하고 그 요소를 반환합니다.  
+대상 배열 원본이 변경됩니다.
+
+```js
+const fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.pop()); // 'Cherry'
+console.log(fruits); // ['Apple', 'Banana']
+```
