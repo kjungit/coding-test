@@ -862,3 +862,20 @@ const fruits = ["Apple", "Banana", "Cherry"];
 console.log(fruits.pop()); // 'Cherry'
 console.log(fruits); // ['Apple', 'Banana']
 ```
+
+### .push()
+
+대상 배열의 마지막에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환합니다.  
+대상 배열 원본이 변경됩니다.
+
+```js
+const fruits = ["Apple", "Banana", "Cherry"];
+
+const newLength = fruits.push("Orange");
+console.log(newLength); // 4
+console.log(fruits); // ['Apple', 'Banana', 'Cherry', 'Orange']
+
+fruits.push("Mango", "Strawberry");
+console.log(fruits);
+// ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango', 'Strawberry']
+```
