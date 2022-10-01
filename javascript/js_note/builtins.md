@@ -879,3 +879,41 @@ fruits.push("Mango", "Strawberry");
 console.log(fruits);
 // ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango', 'Strawberry']
 ```
+
+### .reduce()
+
+대상 배열의 길이만큼 주어진 콜백을 실행하고, 마지막에 호출되는 콜백의 반환 값을 반환합니다.  
+각 콜백의 반환 값은 다음 콜백으로 전달됩니다.
+
+```js
+const numbers = [1, 2, 3];
+
+// const result = numbers.reduce((acc, cur) => acc + cur, 0)
+const result = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(result); // 6
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+
+// 총 나이 계산
+const totalAge = users.reduce((acc, cur) => acc + cur.age, 0);
+console.log(totalAge); // 118
+console.log(`평균 나이: ${(totalAge / users.length).toFixed(1)}세`); // '평균 나이: 39.3세'
+
+// 모든 이름 추출
+const names = users
+  .reduce((acc, cur) => {
+    acc.push(cur.name);
+    return acc;
+  }, [])
+  .join(", ");
+console.log(names); // 'Neo, Amy, Lewis'
+```
