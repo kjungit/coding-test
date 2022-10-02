@@ -917,3 +917,24 @@ const names = users
   .join(", ");
 console.log(names); // 'Neo, Amy, Lewis'
 ```
+
+### .reverse()
+
+대상 배열의 순서를 반전합니다.  
+대상 배열 원본이 변경됩니다.
+
+```js
+const arr = ["A", "B", "C"];
+const reversed = arr.reverse();
+
+console.log(reversed); // ['C', 'B', 'A']
+console.log(arr); // ['C', 'B', 'A']
+```
+
+```js
+const str = "Hello~";
+const reversedStr = str.split("").reverse().join("");
+
+console.log(reversedStr); // '~olleH'
+console.log(str); // 'Hello~'
+```
