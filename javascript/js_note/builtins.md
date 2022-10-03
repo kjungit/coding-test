@@ -938,3 +938,15 @@ const reversedStr = str.split("").reverse().join("");
 console.log(reversedStr); // '~olleH'
 console.log(str); // 'Hello~'
 ```
+
+### .shift()
+
+대상 배열에서 첫 번째 요소를 제거하고, 제거된 요소를 반환합니다.  
+대상 배열 원본이 변경됩니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+console.log(arr.shift()); // 'A'
+console.log(arr); // ['B', 'C']
+```
