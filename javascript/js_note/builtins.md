@@ -950,3 +950,17 @@ const arr = ["A", "B", "C"];
 console.log(arr.shift()); // 'A'
 console.log(arr); // ['B', 'C']
 ```
+
+### .slice()
+
+대상 배열의 일부를 추출해 새로운 배열을 반환합니다.  
+두 번째 인수 직전까지 추출하고, 두 번째 인수를 생략하면 대상 배열의 끝까지 추출합니다.
+
+```js
+const arr = ["A", "B", "C", "D", "E", "F", "G"];
+
+console.log(arr.slice(0, 3)); // ['A', 'B', 'C']
+console.log(arr.slice(4, -1)); // ['E', 'F']
+console.log(arr.slice(4)); // ['E', 'F', 'G']
+console.log(arr); // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+```
