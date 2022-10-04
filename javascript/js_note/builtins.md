@@ -964,3 +964,14 @@ console.log(arr.slice(4, -1)); // ['E', 'F']
 console.log(arr.slice(4)); // ['E', 'F', 'G']
 console.log(arr); // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 ```
+
+### .some()
+
+대상 배열의 어떤 요소라도 콜백 테스트를 통과하는지 확인합니다.
+
+```js
+const arr = [1, 2, 3, 4];
+const isValid = arr.some((item) => item > 3);
+
+console.log(isValid); // true
+```
