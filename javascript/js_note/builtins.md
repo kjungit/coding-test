@@ -975,3 +975,42 @@ const isValid = arr.some((item) => item > 3);
 
 console.log(isValid); // true
 ```
+
+### .sort()
+
+대상 배열을 콜백의 반환 값에 따라 정렬합니다.  
+콜백을 제공하지 않으면, 요소를 문자열로 변환하고 유니코드 코드 포인트 순서로 정렬합니다.  
+대상 배열 원본이 변경됩니다.
+
+**콜백의 반환 값:**
+
+- 음수: `a`를 낮은 순서로 정렬
+- `0`: 순서 변경 없음
+- 양수: `b`를 낮은 순서로 정렬
+
+```js
+const numbers = [4, 17, 2, 103, 3, 1, 0];
+
+numbers.sort();
+console.log(numbers); // [0, 1, 103, 17, 2, 3, 4]
+
+numbers.sort((a, b) => a - b);
+console.log(numbers); // [0, 1, 2, 3, 4, 17, 103]
+
+numbers.sort((a, b) => b - a);
+console.log(numbers); // [103, 17, 4, 3, 2, 1, 0]
+```
+
+```js
+const users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+
+users.sort((a, b) => a.age - b.age);
+console.log(users); // [ Lewis객체, Amy객체, Neo객체 ]
+
+// users.sort((a, b) => b.age - a.age)
+// console.log(users) // [ Neo객체, Amy객체, Lewis객체 ]
+```
