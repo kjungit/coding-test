@@ -1055,3 +1055,37 @@ arr.splice(0, 0, "X", "Y", "Z");
 
 console.log(arr); // ['X', 'Y', 'Z', 'A', 'B', 'C']
 ```
+
+### .unshift()
+
+새로운 요소를 대상 배열의 맨 앞에 추가하고 새로운 배열의 길이를 반환합니다.
+대상 배열 원본이 변경됩니다.
+
+```js
+const arr = ["A", "B", "C"];
+
+console.log(arr.unshift("X")); // 4
+console.log(arr); // ['X', 'A', 'B', 'C']
+```
+
+### Array.from()
+
+유사 배열(Array-like)을 실제 배열로 반환합니다.
+
+```js
+const arraylike = {
+  0: "A",
+  1: "B",
+  2: "C",
+  length: 3,
+};
+
+console.log(arraylike.constructor === Array); // false
+console.log(arraylike.constructor === Object); // true
+
+// arraylike.forEach(item => console.log(item)) // Error!
+Array.from(arraylike).forEach((item) => console.log(item));
+// 'A'
+// 'B'
+// 'C'
+```
