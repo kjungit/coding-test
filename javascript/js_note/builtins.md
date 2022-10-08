@@ -1089,3 +1089,20 @@ Array.from(arraylike).forEach((item) => console.log(item));
 // 'B'
 // 'C'
 ```
+
+### Array.isArray()
+
+배열 데이터인지 확인합니다.
+
+```js
+const array = ["A", "B", "C"];
+const arraylike = {
+  0: "A",
+  1: "B",
+  2: "C",
+  length: 3,
+};
+
+console.log(Array.isArray(array)); // true
+console.log(Array.isArray(arraylike)); // false
+```
