@@ -1152,3 +1152,32 @@ const result = {
 console.log(target); // { a: 1, b: 2 }
 console.log(result); // { a: 1, b: 3, c: 5, d: 6 }
 ```
+
+### Object.entries()
+
+주어진 객체의 각 속성과 값으로 하나의 배열 만들어 요소로 추가한 2차원 배열을 반환합니다.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+  isValid: true,
+  email: "thesecon@gmail.com",
+};
+
+console.log(Object.entries(user));
+// [
+//   ['name', 'Heropy'],
+//   ['age', 85],
+//   ['isValid', true],
+//   ['email', 'thesecon@gmail.com']
+// ]
+
+for (const [key, value] of Object.entries(user)) {
+  console.log(key, value);
+}
+// name Heropy
+// age 85
+// isValid true
+// email thesecon@gmail.com
+```
