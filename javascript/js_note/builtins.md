@@ -1181,3 +1181,18 @@ for (const [key, value] of Object.entries(user)) {
 // isValid true
 // email thesecon@gmail.com
 ```
+
+### Object.keys()
+
+주어진 객체의 속성 이름을 나열한 배열을 반환합니다.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+  isValid: true,
+  email: "thesecon@gmail.com",
+};
+
+console.log(Object.keys(user)); // ['name', 'age', 'isValid', 'email']
+```
