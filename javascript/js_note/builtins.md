@@ -1196,3 +1196,19 @@ const user = {
 
 console.log(Object.keys(user)); // ['name', 'age', 'isValid', 'email']
 ```
+
+### Object.values()
+
+주어진 객체의 속성 값을 나열한 배열을 반환합니다.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+  isValid: true,
+  email: "thesecon@gmail.com",
+};
+
+console.log(Object.values(user));
+// ['Heropy', 85, true, 'thesecon@gmail.com']
+```
