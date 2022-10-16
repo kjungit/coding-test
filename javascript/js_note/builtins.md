@@ -1212,3 +1212,26 @@ const user = {
 console.log(Object.values(user));
 // ['Heropy', 85, true, 'thesecon@gmail.com']
 ```
+
+### Object.freeze()와 Object.isFrozen()
+
+주어진 객체를 변경할 수 없도록 동결하거나, 동결 여부를 확인합니다.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+};
+
+user.age = 44;
+console.log(user); // { name: 'Heropy', age: 44 }
+console.log(Object.isFrozen(user)); // false
+
+// 동결!
+Object.freeze(user);
+
+user.age = 22;
+user.email = "thesecon@gmail.com";
+console.log(user); // { name: 'Heropy', age: 44 }
+console.log(Object.isFrozen(user)); // true
+```
