@@ -1235,3 +1235,27 @@ user.email = "thesecon@gmail.com";
 console.log(user); // { name: 'Heropy', age: 44 }
 console.log(Object.isFrozen(user)); // true
 ```
+
+### Object.seal()과 Object.isSealed()
+
+주어진 객체를 변경할 수 없도록 밀봉하거나, 밀봉 여부를 확인합니다.  
+동결과 다른 점은 밀봉 후에도 속성의 값을 변경할 수 있습니다.
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+};
+
+user.age = 44;
+console.log(user); // { name: 'Heropy', age: 44 }
+console.log(Object.isSealed(user)); // false
+
+// 밀봉!
+Object.seal(user);
+
+user.age = 22; // 변경 가능!
+user.email = "thesecon@gmail.com";
+console.log(user); // { name: 'Heropy', age: 22 } // 변경됨!
+console.log(Object.isSealed(user)); // true
+```
