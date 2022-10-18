@@ -301,3 +301,20 @@ function hello(msg: string): undefined {
   console.log(`Hello ${msg}`);
 }
 ```
+
+### Never
+
+Never은 <strong>절대 발생하지 않을 값</strong>을 나타내며, 어떠한 타입도 적용할 수 없습니다.
+
+```typescript
+function error(message: string): never {
+  throw `Error! - ${message}`;
+}
+```
+
+보통 다음과 같이 빈 배열을 타입으로 잘못 선언한 경우, Never를 확인할 수 있습니다.
+
+```typescript
+const never: [] = [];
+never.push(3); // Error! - 숫자 '3'은 'never' 타입의 매개변수에 할당할 수 없습니다.(2345)
+```
