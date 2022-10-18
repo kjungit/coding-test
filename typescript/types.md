@@ -318,3 +318,15 @@ function error(message: string): never {
 const never: [] = [];
 never.push(3); // Error! - 숫자 '3'은 'never' 타입의 매개변수에 할당할 수 없습니다.(2345)
 ```
+
+### 유니언(Union)
+
+2개 이상의 타입을 허용하는 경우, 이를 유니언(Union)이라고 합니다.  
+`|`(vertical bar)를 통해 타입을 구분하며, `()`는 선택적으로 사용할 수 입니다.
+
+```typescript
+let union: string | number;
+union = "Hello type!";
+union = 123;
+union = false; // Error - TS2322: Type 'false' is not assignable to type 'string | number'.
+```
