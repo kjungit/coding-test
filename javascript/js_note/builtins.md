@@ -1259,3 +1259,86 @@ user.email = "thesecon@gmail.com";
 console.log(user); // { name: 'Heropy', age: 22 } // 변경됨!
 console.log(Object.isSealed(user)); // true
 ```
+
+### Object.defineProperty()
+
+주어진 객체에 속성을 추가하거나, 특성을 변경합니다.
+
+| `속성: 기본값`        | 설명                                        |
+| --------------------- | ------------------------------------------- |
+| `enumerable: false`   | 속성의 열거 가능 여부                       |
+| `configurable: false` | 속성의 수정(이미 존재할 때), 삭제 가능 여부 |
+| `writable: false`     | 속성의 값 변경 가능 여부                    |
+| `value: undefined`    | 속성의 값                                   |
+| `get: undefined`      | 속성의 Getter                               |
+| `set: undefined`      | 속성의 Setter                               |
+
+```js
+const user = {};
+Object.defineProperty(user, "name", {
+  value: "Heropy",
+});
+console.log(user.name); // 'Heropy'
+
+// 열거 불가!
+for (const key in user) {
+  console.log("key:", key); // 출력 없음!
+}
+
+// 수정 불가!
+user.name = "Neo";
+console.log(user.name); // 'Heropy'
+
+// 삭제 불가!
+delete user.name;
+console.log(user.name); // 'Heropy'
+```
+
+```js
+const user = {};
+Object.defineProperty(user, "name", {
+  value: "Heropy",
+  configurable: true,
+  writable: true,
+  enumerable: true,
+});
+console.log(user.name); // 'Heropy'
+
+// 열거 가능!
+for (const key in user) {
+  console.log(key); // 'name'
+}
+
+// 수정 가능!
+user.name = "Neo";
+console.log(user.name); // 'Neo'
+
+// 삭제 가능!
+delete user.name;
+console.log(user.name); // undefined
+```
+
+```js
+const user = {
+  _name: "Heropy",
+};
+Object.defineProperty(user, "name", {
+  get() {
+    return this._name;
+  },
+  set(value) {
+    this._name = value;
+    console.log(`이름이 ${value}로 바뀌었습니다!`);
+  },
+});
+
+// Get!
+console.log(user.name); // 'Heropy'
+
+// Set!
+user.name = "Neo"; // '이름이 Neo로 바뀌었습니다!'
+
+for (let key in user) {
+  console.log(key); // '_name'
+}
+```
