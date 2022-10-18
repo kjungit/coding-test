@@ -284,3 +284,20 @@ const userB: User = {
   email: "thesecon@gmail.com", // Error
 };
 ```
+
+### Void
+
+Void는 값을 반환하지 않는 함수에서 사용합니다.
+
+```typescript
+function hello(msg: string): void {
+  console.log(`Hello ${msg}`);
+}
+```
+
+```typescript
+// Error! - 선언된 타입이 'void' 혹은 'any'가 아닌 함수는 return 문을 포함해야 합니다.(2355)
+function hello(msg: string): undefined {
+  console.log(`Hello ${msg}`);
+}
+```
