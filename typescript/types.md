@@ -370,3 +370,167 @@ const evan: IUserNew = {
   isValid: "Yes!",
 };
 ```
+
+### 함수(Function)
+
+화살표 함수를 이용해 타입을 지정할 수 있습니다.  
+인수의 타입과 반환 값의 타입을 입력합니다.
+
+```typescript
+// myFunc는 2개의 숫자 타입 인수를 가지고, 숫자 타입을 반환하는 함수.
+let myFunc: (arg1: number, arg2: number) => number;
+myFunc = function (x, y) {
+  return x + y;
+};
+
+// 인수가 없고, 반환도 없는 경우.
+let yourFunc: () => void;
+yourFunc = function () {
+  console.log("Hello world~");
+};
+```
+
+혹은 인터페이스로 함수 타입을 지정할 수 있습니다.
+
+```typescript
+interface MyFunc {
+  (x: number, y: number): number;
+}
+
+const myFunc: MyFunc = function (x, y) {
+  return x + y;
+};
+```
+
+다음 예제를 가볍게 읽어보세요.
+
+```ts
+/// 문자
+let str: string;
+let red: string = "Red";
+let green: string = "Green";
+let myColor: string = `My color is ${red}.`;
+let yourColor: string = "Your color is" + green;
+
+/// 숫자
+let num: number;
+let integer: number = 6;
+let float: number = 3.14;
+let infinity: number = Infinity;
+let nan: number = NaN;
+
+/// 불린
+let isBoolean: boolean;
+let isDone: boolean = false;
+
+/// Null / Undefined
+let nul: null;
+let und: undefined;
+nul = null;
+let num: number;
+num = 123;
+console.log(nul);
+console.log(und);
+console.log(num);
+
+/// 배열
+const fruits: string[] = ["Apple", "Banana", "Cherry"];
+const numbers: number[] = [1, 2, 3, 4, 5, 6, 7];
+const union: (string | number)[] = ["Apple", 1, 2, "Banana", 3];
+const array: number[] = [1, 2, 3];
+
+/// 객체
+// typeof DATA === 'object'
+const obj: object = {};
+const arr: object = [];
+const func: object = function () {};
+
+interface User {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+const userA: User = {
+  name: "Heropy",
+  age: 85,
+  isValid: true,
+};
+const userB: User = {
+  name: "Neo",
+  age: 22,
+  isValid: false,
+};
+
+/// 함수
+const add: (x: number, y: number) => number = function (x, y) {
+  return x + y;
+};
+const a: number = add(1, 2);
+
+const hello: () => void = function () {
+  console.log("Hello world~");
+};
+const h: void = hello();
+
+/// Any
+let hello: any = "Hello world";
+hello = 123;
+hello = false;
+hello = null;
+hello = {};
+hello = [];
+hello = function () {};
+
+/// Unknown
+const a: any = 123;
+const u: unknown = 123;
+
+const any: any = a;
+const boo: boolean = a;
+const num: number = a;
+const arr: string[] = a;
+const obj: { x: string; y: number } = a;
+// const any: any = u
+// const boo: boolean = u
+// const num: number = u
+// const arr: string[] = u
+// const obj: { x: string, y: number } = u
+
+/// Tuple
+const tuple: [string, number, boolean] = ["a", 1, false];
+const users: [number, string, boolean][] = [
+  [1, "Neo", true],
+  [2, "Evan", false],
+  [3, "Lewis", true],
+];
+
+/// Void
+function hello(msg: string): void {
+  console.log(`Hello ${msg}`);
+}
+const hi: void = hello("world");
+
+/// Never
+const nev: [] = [];
+nev.push(3);
+
+/// Union
+let union: string | number;
+union = "Hello type!";
+union = 123;
+union = false;
+
+/// Intersection
+interface User {
+  name: string;
+  age: number;
+}
+interface Validation {
+  isValid: boolean;
+}
+const heropy: User & Validation = {
+  name: "Neo",
+  age: 85,
+  isValid: true,
+};
+```
