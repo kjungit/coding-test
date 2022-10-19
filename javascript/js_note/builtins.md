@@ -1342,3 +1342,38 @@ for (let key in user) {
   console.log(key); // '_name'
 }
 ```
+
+### Object.defineProperties()
+
+주어진 객체에 여러 속성을 추가하거나, 특성을 변경합니다.
+
+```js
+const user = {};
+Object.defineProperties(user, {
+  name: {
+    enumerable: true,
+    value: "Heropy",
+  },
+  age: {
+    enumerable: true,
+    value: 85,
+  },
+  email: {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: [],
+  },
+  address: {
+    value: "경기 수원시",
+  },
+});
+
+console.log(user);
+for (const key in user) {
+  console.log(key);
+}
+// 'name'
+// 'age'
+// 'email'
+```
