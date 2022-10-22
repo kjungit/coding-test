@@ -100,3 +100,83 @@ import {
 ```js
 import * as myName from "./myModule.js";
 ```
+
+## 가져와서 바로 내보내기
+
+가져온 모듈을 바로 내보낼 수 있습니다.  
+`import` 키워드 대신 `export` 키워드를 사용합니다.
+
+아래 예제는, `module.js` >> `middle.js` >> `main.js` 순으로 데이터를 전달합니다.
+
+```js
+// module.js
+export default 1;
+export const a = 2;
+export const b = 3;
+```
+
+1. 모듈의 각 내보내기를 모두 가져와서 한 번에 내보내기
+
+```js
+// middle.js
+export * as default from "./module.js";
+
+// main.js
+import def from "./middle.js";
+console.log(def); // { default: 1, a: 2, b: 3 }
+```
+
+2. 모듈의 각 내보내기를 가져와서 그대로 내보내기
+
+```js
+// middle.js
+export { default, a, b } from "./module.js";
+
+// main.js
+import def, { a, b } from "./middle.js";
+console.log(def); // 1
+console.log(a); // 2
+console.log(b); // 3
+```
+
+3. 모듈의 이름 내보내기를 가져와서 이름 변경 후 내보내기
+
+```js
+// middle.js
+export { default, a as x, b as y } from "./module.js";
+
+// main.js
+import def, { x, y } from "./middle.js";
+console.log(def); // 1
+console.log(x); // 2
+console.log(y); // 3
+```
+
+## 동적 모듈 가져오기
+
+`import` 함수를 통해 동적으로 모듈을 가져올 수 있습니다.  
+`import` 함수는 `promise` 객체를 반환합니다.
+
+```js
+import("경로").then((abc) => console.log(abc));
+// 혹은,
+const abc = await import("경로");
+console.log(abc);
+```
+
+다음은 모듈을 1초 후에 가져오는 예시입니다.
+
+```js
+setTimeout(() => {
+  import("./module.js").then((abc) => {
+    console.log(abc);
+  });
+}, 1000);
+
+// 혹은,
+
+setTimeout(async () => {
+  const abc = await import("./module.js");
+  console.log(abc);
+}, 1000);
+```
