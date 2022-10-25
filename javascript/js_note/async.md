@@ -37,3 +37,32 @@ console.log("Hello World!");
 // 'Hello World!'
 // 버튼을 누르면, 'Clicked!'
 ```
+
+### 영화 검색 예시
+
+쿼리스트링(Query string)은 URL 주소에 `키=값` 형태로 데이터를 담아 웹서버로 전달하는 방식입니다.  
+`?`로 시작해서 `키=값`을 `&`로 구분합니다.
+
+```plaintext
+https://google.com?키1=값1&키2=값2&키3=값3
+```
+
+```js
+fetch("https://www.omdbapi.com/?apikey=7035c60c&s=frozen").then((res) =>
+  console.log(res)
+);
+```
+
+```js
+fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
+  method: "GET",
+  headers: {
+    "content-type": "application/json",
+    apikey: "FcKdtJs202204",
+    username: "ParkYoungWoong",
+  },
+  body: {},
+})
+  .then((res) => res.json())
+  .then((res) => console.log(res));
+```
