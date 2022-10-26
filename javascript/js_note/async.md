@@ -66,3 +66,94 @@ fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
   .then((res) => res.json())
   .then((res) => console.log(res));
 ```
+
+## 콜백 패턴
+
+```js
+const a = () => console.log(1);
+const b = () => console.log(2);
+
+a();
+b();
+// 1
+// 2
+```
+
+```js
+const a = (callback) => {
+  setTimeout(() => {
+    console.log(1);
+    callback();
+  }, 1000);
+};
+const b = () => console.log(2);
+
+a(() => {
+  b();
+});
+// 1
+// 2
+```
+
+```js
+// 콜백 지옥(Callback hell)
+
+const a = (callback) => {
+  setTimeout(() => {
+    console.log(1);
+    callback();
+  }, 1000);
+};
+const b = (callback) => {
+  setTimeout(() => {
+    console.log(2);
+    callback();
+  }, 1000);
+};
+const c = (callback) => {
+  setTimeout(() => {
+    console.log(3);
+    callback();
+  }, 1000);
+};
+const d = (callback) => {
+  setTimeout(() => {
+    console.log(4);
+    callback();
+  }, 1000);
+};
+// ...
+
+a(() => {
+  b(() => {
+    c(() => {
+      d(() => {
+        // ...
+      });
+    });
+  });
+});
+```
+
+```js
+// 영화 검색 예시
+
+const getMovies = (movieName, callback) => {
+  fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      callback();
+    });
+};
+
+getMovies("frozen", () => {
+  console.log("겨울왕국!");
+  getMovies("avengers", () => {
+    console.log("어벤져스!");
+    getMovies("avatar", () => {
+      console.log("아바타!");
+    });
+  });
+});
+```
