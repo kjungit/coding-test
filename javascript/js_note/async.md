@@ -157,3 +157,88 @@ getMovies("frozen", () => {
   });
 });
 ```
+
+## Promise
+
+```js
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve();
+    }, 1000);
+  });
+};
+const b = () => console.log(2);
+
+a().then(() => b());
+```
+
+```js
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve();
+    }, 1000);
+  });
+};
+const b = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(2);
+      resolve();
+    }, 1000);
+  });
+};
+const c = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(3);
+      resolve();
+    }, 1000);
+  });
+};
+const d = () => console.log(4);
+```
+
+`.then()`에서 `promise` 인스턴스를 반환하면, 다시 뒤에서 `.then()`을 체이닝으로 사용할 수 있습니다.
+
+```js
+// 콜백 지옥해서 해방!
+a()
+  .then(() => b())
+  .then(() => c())
+  .then(() => d());
+
+// promise 반환
+a().then(b).then(c).then(d);
+```
+
+```js
+// 영화 검색 예시
+
+const getMovies = (movieName) => {
+  return new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        resolve();
+      });
+  });
+};
+
+getMovies("frozen")
+  .then(() => {
+    console.log("겨울왕국!");
+    return getMovies("avengers");
+  })
+  .then(() => {
+    console.log("어벤져스!");
+    return getMovies("avatar");
+  })
+  .then(() => {
+    console.log("아바타!");
+  });
+```
