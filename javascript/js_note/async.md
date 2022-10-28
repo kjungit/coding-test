@@ -242,3 +242,67 @@ getMovies("frozen")
     console.log("아바타!");
   });
 ```
+
+## async/await
+
+```js
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve();
+    }, 1000);
+  });
+};
+const b = () => console.log(2);
+
+// a().then(() => b())
+
+const wrap = async () => {
+  await a();
+  b();
+};
+wrap();
+```
+
+```js
+// .then()
+a()
+  .then(() => b())
+  .then(() => c())
+  .then(() => d());
+
+// async/await
+const wrap = async () => {
+  await a();
+  await b();
+  await c();
+  await d();
+};
+wrap();
+```
+
+```js
+// 영화 검색 예시
+
+const getMovies = (movieName) => {
+  return new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        resolve();
+      });
+  });
+};
+
+const wrap = async () => {
+  await getMovies("frozen");
+  console.log("겨울왕국!");
+  await getMovies("avengers");
+  console.log("어벤져스!");
+  await getMovies("avatar");
+  console.log("아바타!");
+};
+wrap();
+```
