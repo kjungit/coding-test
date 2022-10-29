@@ -306,3 +306,97 @@ const wrap = async () => {
 };
 wrap();
 ```
+
+## Resolve, Reject 그리고 에러 핸들링
+
+```js
+const delayAdd = (index, cb, errorCb) => {
+  setTimeout(() => {
+    if (index > 10) {
+      errorCb(`${index}는 10보다 클 수 없습니다.`);
+      return;
+    }
+    console.log(index);
+    cb(index + 1);
+  }, 1000);
+};
+
+delayAdd(
+  4,
+  (res) => console.log(res),
+  (err) => console.error(err)
+);
+```
+
+```js
+const delayAdd = (index) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (index > 10) {
+        reject(`${index}는 10보다 클 수 없습니다.`);
+        return;
+      }
+      console.log(index);
+      resolve(index + 1);
+    }, 1000);
+  });
+};
+
+// .then()
+delayAdd(11)
+  .then((res) => console.log(res))
+  .catch((err) => console.error(err))
+  .finally(() => console.log("Done!"));
+
+// async / await
+const wrap = async () => {
+  try {
+    const res = await delayAdd(11);
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    console.log("Done!");
+  }
+};
+wrap();
+```
+
+```js
+const getMovies = (movieName) => {
+  return new Promise((resolve, reject) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.Response === "False") {
+          reject(json.Error);
+        }
+        resolve(json);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+let loading = true;
+
+// .then()
+getMovies("avengers")
+  .then((movies) => console.log("영화 목록:", movies))
+  .catch((error) => console.log("에러 발생:", error))
+  .finally(() => (loading = false));
+
+// async / await
+const wrap = async () => {
+  try {
+    const movies = await getMovies("avengers");
+    console.log("영화 목록:", movies);
+  } catch (error) {
+    console.log("에러 발생:", error);
+  } finally {
+    loading = false;
+  }
+};
+wrap();
+```
