@@ -429,3 +429,77 @@ const wrap = async () => {
 };
 wrap();
 ```
+
+## 이미지 로딩 예제
+
+```html
+<div class="image">
+  <div class="loader">Loading...</div>
+</div>
+```
+
+```css
+.image {
+  width: 360px;
+  height: 200px;
+  margin: 10px;
+  border: 4px solid;
+  border-radius: 10px;
+  font-size: 40px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image.done {
+  background-image: url("https://gstatic.com/webp/gallery/1.jpg");
+}
+.image.done .loader {
+  display: none;
+}
+```
+
+콜백으로 구현
+
+```js
+function loadImage(src, callback) {
+  const img = document.createElement("img");
+  img.src = src;
+  img.addEventListener("load", () => {
+    callback(img);
+  });
+}
+
+const imgContainer = document.querySelector(".image");
+
+loadImage("https://gstatic.com/webp/gallery/1.jpg", (img) => {
+  imgContainer.classList.add("done");
+});
+```
+
+프로미스로 구현
+
+```js
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.addEventListener("load", () => {
+      resolve(img);
+    });
+  });
+}
+
+const imgContainer = document.querySelector(".image");
+
+// .then()
+loadImage("https://gstatic.com/webp/gallery/1.jpg").then((img) => {
+  imgContainer.classList.add("done");
+});
+
+// async/await
+(async function () {
+  const img = await loadImage("https://gstatic.com/webp/gallery/1.jpg");
+  imgContainer.classList.add("done");
+})();
+```
