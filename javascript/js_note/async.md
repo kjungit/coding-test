@@ -503,3 +503,9 @@ loadImage("https://gstatic.com/webp/gallery/1.jpg").then((img) => {
   imgContainer.classList.add("done");
 })();
 ```
+
+## 상태
+
+- pending(대기)
+- fulfilled(이행)
+- rejected(거부)
