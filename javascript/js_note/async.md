@@ -509,3 +509,30 @@ loadImage("https://gstatic.com/webp/gallery/1.jpg").then((img) => {
 - pending(대기)
 - fulfilled(이행)
 - rejected(거부)
+
+## Promise.all()
+
+모든 프로미스가 이행한 후 배열을 반환합니다.
+
+```js
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1);
+    }, 1000);
+  });
+};
+const b = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(2);
+    }, 2000);
+  });
+};
+
+const wrap = async () => {
+  const [resA, resB] = await Promise.all([a(), b()]);
+  console.log(resA, resB);
+};
+wrap();
+```
