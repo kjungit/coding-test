@@ -536,3 +536,30 @@ const wrap = async () => {
 };
 wrap();
 ```
+
+## Promise.race()
+
+더 먼저 완료되는 결과만 이행/거부 합니다.
+
+```js
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1);
+    }, 1000);
+  });
+};
+const b = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(2);
+    }, 2000);
+  });
+};
+
+const wrap = async () => {
+  const res = await Promise.race([a(), b()]);
+  console.log(res); // 1
+};
+wrap();
+```
