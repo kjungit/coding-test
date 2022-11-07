@@ -99,3 +99,53 @@ console.log(a.x); // 2
 
 - 얕은 복사(Shallow Copy) - 참조형의 1차원 데이터만 복사
 - 깊은 복사(Deep Copy) - 참조형의 모든 차원 데이터를 복사
+
+## 객체 예제
+
+```js
+const a = { x: 1 };
+const b = a;
+
+b.x = 2;
+
+console.log(b); // { x: 2 }
+console.log(a); // { x: 2 }
+```
+
+```js
+const a = { x: 1 };
+const b = { ...a }; // 얕은 복사!
+// const b = Object.assign({}, a) // 얕은 복사!
+
+b.x = 2;
+
+console.log(b); // { x: 2 }
+console.log(a); // { x: 1 }
+```
+
+참조형 내 참조형이 포함된 경우 얕은 복사만으로는 완전히 새로운 데이터를 만들 수 없습니다.
+
+```js
+const a = { x: { y: 1 } };
+const b = { ...a }; // 얕은 복사!
+
+b.x.y = 2;
+
+console.log(b); // { x: { y: 2 } }
+console.log(a); // { x: { y: 2 } }
+```
+
+참조형 내 참조형이 수 많은 깊이를 가지더라도 완전히 새로운 데이터를 만들 수 있도록,  
+Lodash 패키지의 cloneDeep 함수를 사용할 수 있습니다.
+
+```js
+import cloneDeep from "lodash/cloneDeep";
+
+const a = { x: { y: 1 } };
+const b = cloneDeep(a); // 깊은 복사!
+
+b.x.y = 2;
+
+console.log(b); // { x: { y: 2 } }
+console.log(a); // { x: { y: 1 } }
+```
