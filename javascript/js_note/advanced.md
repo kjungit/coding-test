@@ -149,3 +149,48 @@ b.x.y = 2;
 console.log(b); // { x: { y: 2 } }
 console.log(a); // { x: { y: 1 } }
 ```
+
+## 배열 예제
+
+```js
+const a = [1, 2, 3];
+const b = a;
+
+b[0] = 4;
+
+console.log(b); // [4, 2, 3]
+console.log(a); // [4, 2, 3]
+```
+
+```js
+const a = [1, 2, 3];
+const b = [...a]; // 얕은 복사!
+// const b = a.concat([]) // 얕은 복사!
+
+b[0] = 4;
+
+console.log(b); // [4, 2, 3]
+console.log(a); // [1, 2, 3]
+```
+
+```js
+const a = [[1, 2], [3]];
+const b = [...a];
+
+b[0][0] = 4;
+
+console.log(b); // [[4, 2], [3]]
+console.log(a); // [[4, 2], [3]]
+```
+
+```js
+import cloneDeep from "lodash/cloneDeep";
+
+const a = [[1, 2], [3]];
+const b = cloneDeep(a);
+
+b[0][0] = 4;
+
+console.log(b); // [[4, 2], [3]]
+console.log(a); // [[1, 2], [3]]
+```
