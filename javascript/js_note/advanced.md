@@ -194,3 +194,35 @@ b[0][0] = 4;
 console.log(b); // [[4, 2], [3]]
 console.log(a); // [[1, 2], [3]]
 ```
+
+---
+
+# 가비지 컬렉션
+
+가비지 컬렉션(GC, Garbage Collection, 쓰레기 수집)은 자바스크립트의 메모리 관리 방법으로,  
+자바스크립트 엔진이 자동으로 데이터가 할당된 메모리에서 더 이상 사용되지 않는 데이터를 해제하는 것을 말합니다.  
+가비지 컬렉션은 자동으로 동작하기 때문에, 개발자가 직접 강제 실행하거나 관리할 수 없습니다.
+
+```js
+let a = { x: 1 };
+let b = a;
+
+b.x = 2;
+console.log(b); // { x: 2 }
+console.log(a); // { x: 2 }
+
+// 가비지 컬렉션을 통해 숫자 1은 메모리에서 해제!
+```
+
+```js
+const user = {
+  name: "Heropy",
+  age: 85,
+  emails: ["thesecon@gmail.com", "heropy@abc.com"],
+};
+
+delete user.emails;
+console.log(user); // { name: 'Heropy', age: 85 }
+
+// 가비지 컬렉션을 통해 이메일 배열은 메모리에서 해제!
+```
