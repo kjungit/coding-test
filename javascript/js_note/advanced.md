@@ -246,3 +246,48 @@ console.log(count()); // 1
 console.log(count()); // 2
 console.log(count()); // 3
 ```
+
+## 활용 예제
+
+```html
+<h1>Hello world!</h1>
+<h2>Hello world!</h2>
+```
+
+클로저를 사용하지 않은 예제
+
+```js
+const h1El = document.querySelector("h1");
+const h2El = document.querySelector("h2");
+
+// 별도의 상태 관리가 필요!
+let h1IsRed = false;
+let h2IsRed = false;
+
+h1El.addEventListener("click", (event) => {
+  h1IsRed = !h1IsRed;
+  h1El.style.color = h1IsRed ? "red" : "black";
+});
+h2El.addEventListener("click", (event) => {
+  h2IsRed = !h2IsRed;
+  h2El.style.color = h2IsRed ? "red" : "black";
+});
+```
+
+클로저를 사용한 예제
+
+```js
+const h1El = document.querySelector("h1");
+const h2El = document.querySelector("h2");
+
+// 하나의 함수로 정리!
+const createToggleHandler = () => {
+  let isRed = false;
+  return (event) => {
+    isRed = !isRed;
+    event.target.style.color = isRed ? "red" : "black";
+  };
+};
+h1El.addEventListener("click", createToggleHandler());
+h2El.addEventListener("click", createToggleHandler());
+```
