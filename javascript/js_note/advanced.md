@@ -432,3 +432,17 @@ function second() {
 first();
 second();
 ```
+
+### 최대 호출 스택 크기 초과
+
+환경에 따라 다르지만, 약 1MB 이상 콜 스택이 쌓이면 다음과 같이 에러가 발생합니다.
+
+> Maximum call stack size exceeded
+
+```js
+// 재귀 호출 종료 조건이 없음!
+function a() {
+  console.log("A");
+  a();
+}
+```
