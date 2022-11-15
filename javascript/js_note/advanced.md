@@ -291,3 +291,7 @@ const createToggleHandler = () => {
 h1El.addEventListener("click", createToggleHandler());
 h2El.addEventListener("click", createToggleHandler());
 ```
+
+# 메모리 누수
+
+메모리 누수(Memory Leak)란, 더 이상 필요하지 않은 데이터가 해제되지 못하고 메모리를 계속 차지되는 현상입니다.
