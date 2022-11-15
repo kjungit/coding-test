@@ -295,3 +295,10 @@ h2El.addEventListener("click", createToggleHandler());
 # 메모리 누수
 
 메모리 누수(Memory Leak)란, 더 이상 필요하지 않은 데이터가 해제되지 못하고 메모리를 계속 차지되는 현상입니다.
+
+### 불필요한 전역 변수 사용
+
+```js
+window.hello = "Hello world!";
+window.heropy = { name: "Heropy", age: 85 };
+```
