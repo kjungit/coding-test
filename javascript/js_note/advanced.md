@@ -384,3 +384,51 @@ console.log(fn("Heropy"));
 console.log(fn("Neo"));
 console.log(fn("Lewis"));
 ```
+
+---
+
+# 콜 스택, 테스크 큐, 이벤트 루프
+
+- Heap: 데이터가 할당되는 메모리, 수동 할당/해제는 불가, 가비지 콜렉터(GC)가 관리
+- Queue: 대기 행렬, 줄을 서서 기다리다
+- FIFO(First In First Out): 선입선출, 먼저 들어온 데이터가 먼저 나감
+- LIFO(Last In First Out): 후입선출, 마지막에 들어온 데이터가 먼저 나감
+
+```js
+setTimeout(() => {
+  console.log(1);
+}, 0);
+for (let i = 0; i < 1000; i += 1) {
+  console.log(2);
+}
+
+// (1000) 2
+// 1
+```
+
+```js
+function a() {
+  console.log("A");
+  function b() {
+    setTimeout(() => {
+      console.log("B1");
+      console.log("B2");
+    }, 0);
+  }
+  b();
+}
+function c() {
+  console.log("C");
+}
+
+function first() {
+  a();
+  c();
+}
+function second() {
+  c();
+}
+
+first();
+second();
+```
