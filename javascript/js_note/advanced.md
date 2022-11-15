@@ -366,3 +366,21 @@ setTimeout(() => {
   clearInterval(intervalId); // 타이머 해제!
 }, 1000);
 ```
+
+### 잘못된 클로저 사용
+
+```js
+const getFn = () => {
+  let a = 0;
+  return (name) => {
+    // a += 1
+    console.log(a);
+    return `Hello ${name}~`;
+  };
+};
+
+const fn = getFn();
+console.log(fn("Heropy"));
+console.log(fn("Neo"));
+console.log(fn("Lewis"));
+```
