@@ -446,3 +446,11 @@ function a() {
   a();
 }
 ```
+
+## 테스크(콜백) 큐
+
+### 종류
+
+- 마이크로테스크(Microtask Queue) - `Promise`, `queueMicrotask()` 등
+- 랜더(Render Queue) - `requestAnimationFrame()`
+- 메크로테스크(Macrotask Queue 혹은 Task Queue) - `fetch()`, Ajax, DOM Events 등
