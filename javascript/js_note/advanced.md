@@ -454,3 +454,49 @@ function a() {
 - 마이크로테스크(Microtask Queue) - `Promise`, `queueMicrotask()` 등
 - 랜더(Render Queue) - `requestAnimationFrame()`
 - 메크로테스크(Macrotask Queue 혹은 Task Queue) - `fetch()`, Ajax, DOM Events 등
+
+### 순서
+
+Micro > Render > Macro
+
+```js
+setTimeout(() => console.log("Macro!"));
+Promise.resolve().then(() => console.log("Micro!"));
+requestAnimationFrame(() => console.log("Animation!"));
+console.log("Stack!");
+// 'Stack!'
+// 'Micro!'
+// 'Render!'
+// 'Macro!'
+```
+
+```js
+// Macro
+setTimeout(() => {
+  alert("setTimeout1");
+  // Micro
+  queueMicrotask(() => {
+    alert("queueMicrotast in setTimeout");
+  });
+});
+// Macro
+fetch("").then(() => {
+  alert("fetch");
+});
+// Render
+requestAnimationFrame(() => {
+  alert("requestAniamtionFrame");
+});
+// Macro
+setTimeout(() => {
+  alert("setTimeout2");
+});
+// Micro
+Promise.resolve().then(() => {
+  alert("Promise");
+});
+// Micro
+queueMicrotask(() => {
+  alert("queueMicrotask");
+});
+```
