@@ -524,3 +524,60 @@ queueMicrotask(() => {
 6. 렌더 트리 생성
 7. 레이아웃 계산
 8. 렌더링(`load` 이벤트)
+
+### requestAnimationFrame()
+
+브라우저의 리페인트 주기에 맞게 콜백을 실행합니다.
+
+```html
+<div class="container">
+  <div class="item"></div>
+</div>
+```
+
+```css
+.container {
+  width: 400px;
+  height: 100px;
+  border: 10px solid;
+  background-color: lightgray;
+}
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+```
+
+```js
+const box = document.querySelector(".item");
+
+let x = 0;
+let intervalId;
+const interval = 40; // 리페인트 주기를 정확히 알 수 없으므로, 대략 40ms로 설정
+const position = 300;
+const animation = () => {
+  if (x >= position) {
+    clearInterval(intervalId);
+    return;
+  }
+  x += 10;
+  box.style.transform = `translateX(${x}px)`;
+};
+intervalId = setInterval(animation, interval);
+```
+
+```js
+let x = 0;
+let animationId;
+const position = 300;
+const animation = () => {
+  if (x >= position) {
+    return;
+  }
+  x += 10;
+  box.style.transform = `translateX(${x}px)`;
+  animationId = requestAnimationFrame(animation);
+};
+requestAnimationFrame(animation);
+```
