@@ -513,3 +513,14 @@ queueMicrotask(() => {
 
 노드의 `visibillty`, `outline`, `transform`, `filter`, `background-color`, `color` 등,  
 주변 노드에 영향을 주지 않는 단순 표시 속성이 변경되면, 브라우저는 리플로우 없이 해당 노드만 리페인트합니다.
+
+### 브라우저 렌더링 과정
+
+1. HTML 파싱
+2. DOM 트리 생성(`DOMContentLoaded` 이벤트)
+3. CSS 파싱
+4. CSSOM 트리 생성
+5. DOM-CSSOM 결합
+6. 렌더 트리 생성
+7. 레이아웃 계산
+8. 렌더링(`load` 이벤트)
