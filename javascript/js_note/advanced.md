@@ -581,3 +581,40 @@ const animation = () => {
 };
 requestAnimationFrame(animation);
 ```
+
+# Throttle & Debounce
+
+## Throttle
+
+일정 시간 간격으로 함수를 실행합니다.  
+(실행 횟수를 조절)
+
+```js
+const throttle = (func, delay = 0) => {
+  let lastFunc;
+  let lastRan;
+  return function (...rest) {
+    if (!lastRan) {
+      func.apply(this, rest);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRan >= delay) {
+          func.apply(this, rest);
+          lastRan = Date.now();
+        }
+      }, delay - (Date.now() - lastRan));
+    }
+  };
+};
+```
+
+```js
+window.addEventListener(
+  "scroll",
+  throttle((event) => {
+    console.log(event);
+  }, 400)
+);
+```
