@@ -618,3 +618,27 @@ window.addEventListener(
   }, 400)
 );
 ```
+
+## Debounce
+
+일정 시간 동안 함수가 실행되지 않으면 함수를 실행합니다.  
+(마지막에 한 번에 실행)
+
+```js
+const debounce = (func, delay = 0) => {
+  let inDebounce;
+  return function (...rest) {
+    clearTimeout(inDebounce);
+    inDebounce = setTimeout(() => func.apply(this, rest), delay);
+  };
+};
+```
+
+```js
+window.addEventListener(
+  "scroll",
+  debounce((event) => {
+    console.log(event);
+  }, 400)
+);
+```
