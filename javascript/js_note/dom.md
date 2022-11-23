@@ -119,3 +119,13 @@ console.log(el.closest("div")); // <div class="child">1</div>
 console.log(el.closest("body")); // <body>...</body>
 console.log(el.closest(".hello")); // null
 ```
+
+### N.previousSibling / N.nextSibling
+
+노드의 이전 형제 혹은 다음 형제 노드를 반환합니다.
+
+```js
+const el = document.querySelector(".child");
+console.log(el.previousSibling); // '\n    '
+console.log(el.nextSibling); // '텍스트1'
+```
