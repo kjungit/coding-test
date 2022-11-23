@@ -97,3 +97,12 @@ nodeList.forEach((el) => console.log(el.textContent));
 // 1
 // 2
 ```
+
+### N.parentElement
+
+노드의 부모 요소를 반환합니다.
+
+```js
+const el = document.querySelector(".child");
+console.log(el.parentElement); // <div class="parent">...</div>
+```
