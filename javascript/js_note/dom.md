@@ -106,3 +106,16 @@ nodeList.forEach((el) => console.log(el.textContent));
 const el = document.querySelector(".child");
 console.log(el.parentElement); // <div class="parent">...</div>
 ```
+
+### E.closest()
+
+자신을 포함한 조상 요소 중 'CSS 선택자'와 일치하는 가장 가까운 요소를 반환합니다.
+요소를 찾지 못하면, `null`을 반환합니다.
+
+```js
+const el = document.querySelector(".child");
+
+console.log(el.closest("div")); // <div class="child">1</div>
+console.log(el.closest("body")); // <body>...</body>
+console.log(el.closest(".hello")); // null
+```
