@@ -46,3 +46,19 @@ console.dir(Element);
 console.dir(Node);
 console.dir(Element.__proto__);
 ```
+
+---
+
+## 검색과 탐색
+
+예제 이해를 위한 기본 HTML 구조
+
+```html
+<div class="parent">
+  <!-- 주석 -->
+  <div class="child">1</div>
+  텍스트1
+  <div id="child2" class="child">2</div>
+  텍스트2
+</div>
+```
