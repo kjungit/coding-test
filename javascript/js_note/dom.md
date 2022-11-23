@@ -73,3 +73,14 @@ HTML `id` 속성(Attributes) 값으로 검색한 요소를 반환합니다.
 const el = document.getElementById("child2");
 console.log(el); // <div id="child2" class="child">2</div>
 ```
+
+### document.querySelector()
+
+'CSS 선택자'로 검색한 요소를 하나 반환합니다.  
+여러 요소가 검색되면, 가장 먼저 찾은 요소만 반환합니다.  
+검색 결과가 없으면, `null`을 반환합니다.
+
+```js
+const el = document.querySelector(".child:first-child");
+console.log(el); // <div class="child">1</div>
+```
