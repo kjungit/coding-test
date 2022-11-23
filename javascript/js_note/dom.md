@@ -84,3 +84,16 @@ console.log(el); // <div id="child2" class="child">2</div>
 const el = document.querySelector(".child:first-child");
 console.log(el); // <div class="child">1</div>
 ```
+
+### document.querySelectorAll()
+
+'CSS 선택자'로 검색한 모든 요소를 `NodeList`로 반환합니다.  
+`NodeList` 객체는 `.forEach()`를 사용할 수 있습니다.
+
+```js
+const nodeList = document.querySelectorAll(".child");
+console.log(nodeList);
+nodeList.forEach((el) => console.log(el.textContent));
+// 1
+// 2
+```
