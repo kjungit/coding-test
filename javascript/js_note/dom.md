@@ -129,3 +129,13 @@ const el = document.querySelector(".child");
 console.log(el.previousSibling); // '\n    '
 console.log(el.nextSibling); // '텍스트1'
 ```
+
+### E.previousElementSibling / E.nextElementSibling
+
+요소의 이전 형제 혹은 다음 형제 요소를 반환합니다.
+
+```js
+const el = document.querySelector(".child");
+console.log(el.previousElementSibling); // null
+console.log(el.nextElementSibling); // <div id="child2" class="child">2</div>
+```
