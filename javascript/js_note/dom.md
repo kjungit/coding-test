@@ -139,3 +139,12 @@ const el = document.querySelector(".child");
 console.log(el.previousElementSibling); // null
 console.log(el.nextElementSibling); // <div id="child2" class="child">2</div>
 ```
+
+### E.children
+
+요소의 모든 자식 요소를 반환합니다.
+
+```js
+const el = document.querySelector(".parent");
+console.log(el.children); // HTMLCollection(2) [div.child, div.child]
+```
