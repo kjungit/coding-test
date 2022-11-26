@@ -148,3 +148,13 @@ console.log(el.nextElementSibling); // <div id="child2" class="child">2</div>
 const el = document.querySelector(".parent");
 console.log(el.children); // HTMLCollection(2) [div.child, div.child]
 ```
+
+### E.firstElementChild / E.lastElementChild
+
+요소의 첫 번째 자식 혹은 마지막 자식 요소를 반환합니다.
+
+```js
+const el = document.querySelector(".parent");
+console.log(el.firstElementChild); // <div class="child">1</div>
+console.log(el.lastElementChild); // <div id="child2" class="child">2</div>
+```
