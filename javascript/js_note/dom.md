@@ -223,3 +223,40 @@ parentEl.append(el, "Text!");
 const el = document.querySelector(".child");
 el.remove();
 ```
+
+### E.insertAdjacentElement()
+
+'대상 요소'의 지정한 위치에 '새로운 요소'를 삽입합니다.
+
+```js
+대상_요소.insertAdjacentElement(위치, 새로운_요소);
+```
+
+각 위치는 다음과 같습니다.
+
+```html
+<!-- 'beforebegin' -->
+<div class="target">
+  <!-- 'afterbegin' -->
+  Content!
+  <!-- 'beforeend' -->
+</div>
+<!-- 'afterend' -->
+```
+
+```js
+const childEl = document.querySelector(".child");
+const newEl = document.createElement("span");
+newEl.textContent = "Hello~";
+
+childEl.insertAdjacentElement("beforebegin", newEl);
+```
+
+```html
+<!-- 결과 -->
+<div class="parent">
+  <span>Hello~</span>
+  <div class="child">1</div>
+  <div class="child">2</div>
+</div>
+```
