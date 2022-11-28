@@ -260,3 +260,24 @@ childEl.insertAdjacentElement("beforebegin", newEl);
   <div class="child">2</div>
 </div>
 ```
+
+### N.contains()
+
+'주어진 노드'가 '노드'의 자신을 포함한 후손인지 확인합니다.
+
+```js
+노드.contains(주어진_노드);
+```
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+console.log(parentEl.contains(childEl)); // true
+console.log(document.body.contains(parentEl)); // true
+console.log(document.body.contains(childEl)); // true
+console.log(document.body.contains(document.body)); // true
+console.log(parentEl.contains(parentEl)); // true
+console.log(parentEl.contains(document.body)); // false
+console.log(childEl.contains(document.body)); // false
+```
