@@ -214,3 +214,12 @@ parentEl.append(el, "Text!");
   Text!
 </div>
 ```
+
+### E.remove()
+
+요소를 제거합니다.
+
+```js
+const el = document.querySelector(".child");
+el.remove();
+```
