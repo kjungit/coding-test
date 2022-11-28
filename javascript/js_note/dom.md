@@ -158,3 +158,28 @@ const el = document.querySelector(".parent");
 console.log(el.firstElementChild); // <div class="child">1</div>
 console.log(el.lastElementChild); // <div id="child2" class="child">2</div>
 ```
+
+---
+
+## 생성, 조회, 수정
+
+예제 이해를 위한 기본 HTML 구조
+
+```html
+<div class="parent">
+  <div class="child">1</div>
+  <div class="child">2</div>
+</div>
+```
+
+### document.createElement()
+
+메모리에만 존재하는 새로운 HTML 요소를 생성해 반환합니다.
+
+```js
+const divEl = document.createElement("div");
+console.log(divEl); // <div></div>
+
+const inputEl = document.createElement("input");
+console.log(inputEl); // <input>
+```
