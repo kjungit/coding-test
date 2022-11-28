@@ -183,3 +183,34 @@ console.log(divEl); // <div></div>
 const inputEl = document.createElement("input");
 console.log(inputEl); // <input>
 ```
+
+#### E.prepend() / E.append()
+
+지정된 여러 노드를 대상 요소의 첫 번째 혹은 마지막 자식으로 삽입합니다.
+
+```js
+요소.prepend(노드1, 노드2);
+요소.append(노드1, 노드2);
+```
+
+```js
+const parentEl = document.querySelector(".parent");
+
+const el = document.createElement("div");
+el.textContent = "Hello~";
+
+parentEl.prepend(new Comment(" 주석 "));
+parentEl.append(el, "Text!");
+// parentEl.append(el)
+// parentEl.append('Text!')
+```
+
+```html
+<div class="parent">
+  <!-- 주석 -->
+  <div class="child">1</div>
+  <div class="child">2</div>
+  <div>Hello~</div>
+  Text!
+</div>
+```
