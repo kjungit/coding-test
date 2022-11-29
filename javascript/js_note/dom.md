@@ -281,3 +281,15 @@ console.log(parentEl.contains(parentEl)); // true
 console.log(parentEl.contains(document.body)); // false
 console.log(childEl.contains(document.body)); // false
 ```
+
+### N.textContent
+
+노드의 모든 텍스트를 얻거나 변경합니다.
+
+```js
+const el = document.querySelector(".child");
+console.log(el.textContent); // '1'
+
+el.textContent = "7";
+console.log(el.textContent); // '7'
+```
