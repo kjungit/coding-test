@@ -293,3 +293,14 @@ console.log(el.textContent); // '1'
 el.textContent = "7";
 console.log(el.textContent); // '7'
 ```
+
+### E.innerHTML
+
+요소의 모든 HTML 구조를 하나의 문자로 얻거나, 새로운 HTML 구조를 삽입합니다.
+
+```js
+const el = document.querySelector(".parent");
+console.log(el.innerHTML);
+
+el.innerHTML = '<span style="color: red;">Hello~</span>';
+```
