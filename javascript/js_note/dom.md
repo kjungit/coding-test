@@ -304,3 +304,27 @@ console.log(el.innerHTML);
 
 el.innerHTML = '<span style="color: red;">Hello~</span>';
 ```
+
+### E.dataset
+
+요소의 각 `data-` 속성 값을 얻거나 지정합니다.
+
+```js
+const el = document.querySelector(".child");
+const str = "Hello world!";
+const obj = { a: 1, b: 2 };
+
+el.dataset.helloWorld = str;
+el.dataset.object = JSON.stringify(obj);
+
+console.log(el.dataset.helloWorld); // 'Hello world!'
+console.log(el.dataset.object); // '{"a":1,"b":2}'
+console.log(JSON.parse(el.dataset.object)); // { a: 1, b: 2 }
+```
+
+```html
+<!-- 결과 -->
+<div class="child" data-hello-world="Hello world!" data-object='{"a":1,"b":2}'>
+  1
+</div>
+```
