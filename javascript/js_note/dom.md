@@ -328,3 +328,18 @@ console.log(JSON.parse(el.dataset.object)); // { a: 1, b: 2 }
   1
 </div>
 ```
+
+### E.tagName
+
+요소의 태그 이름을 반환합니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+const el = document.createElement("span");
+
+console.log(parentEl.tagName); // 'DIV'
+console.log(childEl.tagName); // 'DIV'
+console.log(el.tagName); // 'SPAN'
+console.log(document.body.tagName); // 'BODY'
+```
