@@ -343,3 +343,16 @@ console.log(childEl.tagName); // 'DIV'
 console.log(el.tagName); // 'SPAN'
 console.log(document.body.tagName); // 'BODY'
 ```
+
+### E.id
+
+요소의 `id` 속성 값을 얻거나 지정합니다.
+
+```js
+const el = document.querySelector(".child");
+console.log(el.id); // ''
+
+el.id = "child1";
+console.log(el.id); // 'child1'
+console.log(el); // <div class="child" id="child1">1</div>
+```
