@@ -431,3 +431,26 @@ console.log(el.style.position); // 'absolute'
   1
 </div>
 ```
+
+### window.getComputedStyle()
+
+요소에 적용된 스타일 객체를 반환합니다.
+
+```css
+.child {
+  width: 100px;
+  font-size: 20px;
+  background-color: green;
+  position: absolute;
+}
+```
+
+```js
+const el = document.querySelector(".child");
+const styles = window.getComputedStyle(el);
+
+console.log(styles.width); // '100px'
+console.log(styles.fontSize); // '20px'
+console.log(styles.backgroundColor); // 'rgb(255, 0, 0)'
+console.log(styles.position); // 'absolute'
+```
