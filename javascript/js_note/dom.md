@@ -522,3 +522,11 @@ body {
 console.log(window.innerWidth); // 1920
 console.log(window.innerHeight); // 926
 ```
+
+### window.scrollX / window.scrollY
+
+페이지의 좌상단 기준, 현재 화면(Viewport)의 수평 혹은 수직 스크롤 위치를 얻습니다.
+
+```js
+console.log(window.scrollX, window.scrollY);
+```
