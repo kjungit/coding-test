@@ -480,3 +480,36 @@ console.log(el.hasAttribute("class")); // false
 
 console.log(el); // <div>1</div>
 ```
+
+---
+
+## 크기와 좌표
+
+예제 이해를 위한 기본 HTML/CSS 구조
+
+```html
+<div class="parent">
+  <div class="child">1</div>
+  <div class="child">2</div>
+</div>
+```
+
+```css
+body {
+  height: 1000px;
+  padding: 500px 0;
+}
+.parent {
+  width: 300px;
+  height: 200px;
+  margin-top: 1000px;
+  padding: 20px;
+  overflow: auto;
+  border: 10px solid;
+}
+.child {
+  height: 100px;
+  margin-top: 100px;
+  border: 10px solid red;
+}
+```
