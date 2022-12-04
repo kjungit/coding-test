@@ -393,3 +393,41 @@ el.addEventListener("click", () => {
   console.log(el.classList.contains("active"));
 });
 ```
+
+### E.style
+
+요소의 `style` 속성(인라인 스타일)의 CSS 속성 값을 얻거나 지정합니다.
+
+```js
+const el = document.querySelector(".child");
+
+// 개별 지정!
+el.style.width = "100px";
+el.style.fontSize = "20px";
+el.style.backgroundColor = "green";
+el.style.position = "absolute";
+
+// 한 번에 지정!
+Object.assign(el.style, {
+  width: "100px",
+  fontSize: "20px",
+  backgroundColor: "green",
+  position: "absolute",
+});
+
+console.log(el.style); // CSSStyleDeclaration { ... }
+console.log(el.style.width); // '100px'
+console.log(el.style.fontSize); // '20px'
+console.log(el.style.backgroundColor); // 'green'
+console.log(el.style.position); // 'absolute'
+```
+
+```html
+<!-- 결과 -->
+<div
+  class="child"
+  style="width: 100px; font-size: 20px; background-color: green; position: absolute;"
+>
+  1
+</div>
+```
