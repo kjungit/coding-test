@@ -465,3 +465,18 @@ const el = document.querySelector(".child");
 el.setAttribute("title", "Hello World!");
 console.log(el.getAttribute("title")); // 'Hello World!'
 ```
+
+### E.hasAttribute() / E.removeAttribute()
+
+요소에서 특정 속성을 확인하거나 제거합니다.
+
+```js
+const el = document.querySelector(".child");
+
+console.log(el.hasAttribute("class")); // true
+
+el.removeAttribute("class");
+console.log(el.hasAttribute("class")); // false
+
+console.log(el); // <div>1</div>
+```
