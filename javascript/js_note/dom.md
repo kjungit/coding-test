@@ -530,3 +530,34 @@ console.log(window.innerHeight); // 926
 ```js
 console.log(window.scrollX, window.scrollY);
 ```
+
+### window.scrollTo() / E.scrollTo()
+
+지정된 좌표로 대상(화면, 스크롤 요소)을 스크롤합니다.
+
+```js
+대상.scrollTo(X좌표, Y좌표);
+대상.scrollTo({
+  left: X좌표,
+  top: Y좌표,
+  behavior: "smooth",
+});
+```
+
+```js
+setTimeout(() => {
+  window.scrollTo(0, 500);
+}, 1000);
+```
+
+부드럽게 스크롤하려면 옵션을 제공할 수 있습니다.
+
+```js
+setTimeout(() => {
+  window.scrollTo({
+    left: 0,
+    top: 500,
+    behavior: "smooth",
+  });
+}, 1000);
+```
