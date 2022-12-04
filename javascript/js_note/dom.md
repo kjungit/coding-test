@@ -454,3 +454,14 @@ console.log(styles.fontSize); // '20px'
 console.log(styles.backgroundColor); // 'rgb(255, 0, 0)'
 console.log(styles.position); // 'absolute'
 ```
+
+### E.getAttribute() / E.setAttribute()
+
+요소에서 특정 속성 값을 얻거나 지정합니다.
+
+```js
+const el = document.querySelector(".child");
+
+el.setAttribute("title", "Hello World!");
+console.log(el.getAttribute("title")); // 'Hello World!'
+```
