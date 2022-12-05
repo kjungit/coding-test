@@ -620,3 +620,15 @@ const childEl = document.querySelector(".child");
 console.log(parentEl.offsetLeft, parentEl.offsetTop); // 0, 1500
 console.log(childEl.offsetLeft, childEl.offsetTop); // 30, 1630
 ```
+
+### E.getBoundingClientRect()
+
+테두리 선(border)을 포함한 요소의 크기와 화면에서의 상대 위치 정보를 얻습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+console.log(parentEl.getBoundingClientRect());
+console.log(childEl.getBoundingClientRect());
+```
