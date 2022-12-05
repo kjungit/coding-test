@@ -597,3 +597,14 @@ const childEl = document.querySelector(".child");
 console.log(parentEl.scrollWidth, parentEl.scrollHeight); // 325, 480
 console.log(childEl.scrollWidth, childEl.scrollHeight); // 265, 100
 ```
+
+### E.scrollLeft / E.scrollTop
+
+스크롤 요소의 좌상단 기준, 현재 스크롤 요소의 수평 혹은 수직 스크롤 위치를 얻습니다.
+
+```js
+window.parentEl = document.querySelector(".parent");
+
+// 스크롤 요소에서 실제 스크롤한 후 콘솔에 따로 출력!
+console.log(parentEl.scrollLeft, parentEl.scrollTop);
+```
