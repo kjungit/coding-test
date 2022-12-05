@@ -608,3 +608,15 @@ window.parentEl = document.querySelector(".parent");
 // 스크롤 요소에서 실제 스크롤한 후 콘솔에 따로 출력!
 console.log(parentEl.scrollLeft, parentEl.scrollTop);
 ```
+
+### E.offsetLeft / E.offsetTop
+
+페이지의 좌상단 기준, 요소의 위치를 얻습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+console.log(parentEl.offsetLeft, parentEl.offsetTop); // 0, 1500
+console.log(childEl.offsetLeft, childEl.offsetTop); // 30, 1630
+```
