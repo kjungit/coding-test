@@ -561,3 +561,15 @@ setTimeout(() => {
   });
 }, 1000);
 ```
+
+### E.clientWidth / E.clientHeight
+
+테두리 선(border)을 제외한 요소의 크기를 얻습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+console.log(parentEl.clientWidth, parentEl.clientHeight); // 325, 240 // 스크롤바 제외 너비
+console.log(childEl.clientWidth, childEl.clientHeight); // 265, 100
+```
