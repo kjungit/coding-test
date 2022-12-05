@@ -585,3 +585,15 @@ const childEl = document.querySelector(".child");
 console.log(parentEl.offsetWidth, parentEl.offsetHeight); // 360, 260
 console.log(childEl.offsetWidth, childEl.offsetHeight); // 285, 120
 ```
+
+### E.scrollWidth / E.scrollHeight
+
+요소의 테두리 선(border)을 제외한 스크롤 영역까지의 크기를 얻습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+console.log(parentEl.scrollWidth, parentEl.scrollHeight); // 325, 480
+console.log(childEl.scrollWidth, childEl.scrollHeight); // 265, 100
+```
