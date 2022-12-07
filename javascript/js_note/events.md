@@ -111,3 +111,31 @@ inputEl.addEventListener("keydown", (event) => {
   console.log(event.key);
 });
 ```
+
+### .target
+
+이벤트가 발생한 요소입니다.
+
+### .currentTarget
+
+이벤트 청취가 등록된 요소입니다.
+
+---
+
+## 이벤트 제어
+
+### 기본 동작 방지
+
+```js
+// 마우스 휠의 스크롤 동작 방지!
+const parentEl = document.querySelector(".parent");
+parentEl.addEventListener("wheel", (event) => {
+  event.preventDefault();
+});
+
+// <a> 태그에서 페이지 이동 방지!
+const anchorEl = document.querySelector("a");
+anchorEl.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+```
