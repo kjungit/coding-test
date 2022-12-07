@@ -44,3 +44,43 @@ childEl.addEventListener("click", () => {
   console.log("Child!");
 });
 ```
+
+### .removeEventListener()
+
+대상에 등록했던 이벤트 청취(Listen)를 제거합니다.  
+메모리 관리를 위해 등록한 이벤트를 제거하는 과정이 필요할 수 있습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+const handler = () => {
+  console.log("Parent!");
+};
+
+parentEl.addEventListener("click", handler);
+childEl.addEventListener("click", () => {
+  parentEl.removeEventListener("click", handler);
+});
+```
+
+이벤트 등록시 캡처(Capture) 옵션이 추가된 경우, 청취를 제거할 때도 캡처 옵션을 추가해야 합니다.  
+그렇지 않으면 청취가 제거되지 않습니다.
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+
+const handler = () => {
+  console.log("Parent!");
+};
+
+parentEl.addEventListener("click", handler, {
+  capture: true,
+});
+childEl.addEventListener("click", () => {
+  parentEl.removeEventListener("click", handler, {
+    capture: true,
+  });
+});
+```
