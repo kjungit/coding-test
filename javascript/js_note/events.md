@@ -164,3 +164,50 @@ anchorEl.addEventListener("click", (event) => {
   console.log("Anchor!");
 });
 ```
+
+### 이벤트 캡처
+
+```js
+const parentEl = document.querySelector(".parent");
+const childEl = document.querySelector(".child");
+const anchorEl = document.querySelector("a");
+
+window.addEventListener("click", (event) => {
+  console.log("Window!");
+});
+document.body.addEventListener(
+  "click",
+  (event) => {
+    console.log("Body!");
+  },
+  { capture: true }
+);
+parentEl.addEventListener(
+  "click",
+  (event) => {
+    console.log("Parent!");
+    event.stopPropagation(); // 전파(버블링, 캡처링) 정지!
+  },
+  { capture: true }
+);
+childEl.addEventListener("click", (event) => {
+  console.log("Child!");
+});
+anchorEl.addEventListener("click", (event) => {
+  console.log("Anchor!");
+});
+```
+
+이벤트 캡처 핸들러의 경우, 이벤트를 제거할 때 캡처 옵션이 있어야 제거할 수 있습니다!
+
+```js
+// 이벤트 추가!
+parentEl.addEventListener("click", handler, {
+  capture: true,
+});
+
+// 이벤트 제거!
+parentEl.removeEventListener("click", handler, {
+  capture: true,
+});
+```
