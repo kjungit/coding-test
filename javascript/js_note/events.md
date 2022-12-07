@@ -211,3 +211,40 @@ parentEl.removeEventListener("click", handler, {
   capture: true,
 });
 ```
+
+### 핸들러 한 번만 실행
+
+```js
+const parentEl = document.querySelector(".parent");
+
+parentEl.addEventListener(
+  "click",
+  (event) => {
+    console.log("Parent!");
+  },
+  {
+    once: true,
+  }
+);
+```
+
+### 기본 동작과 핸들러 실행 분리
+
+- 사용성 증가
+- 성능 향상
+
+```js
+const parentEl = document.querySelector(".parent");
+
+parentEl.addEventListener(
+  "wheel",
+  (event) => {
+    for (let i = 0; i < 10000; i += 1) {
+      console.log(i);
+    }
+  },
+  {
+    passive: true,
+  }
+);
+```
