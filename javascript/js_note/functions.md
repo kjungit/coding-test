@@ -64,3 +64,167 @@ const hello2 = function () {
 ```
 
 > 과자 이름보다 과자 성분표시가 먼저 나오는 것이 이상한 것처럼, 호이스팅을 활용해 함수 로직이 먼저 등장하지 않도록 작성할 수 있습니다.
+
+## 함수 반환(Return) 및 종료(Exit)
+
+`return` 키워드로 함수 안에서 밖으로 데이터를 반환할 수 있습니다.
+
+```js
+function hello() {
+  return "Hello~";
+}
+console.log(hello()); // 'Hello~'
+```
+
+`return` 키워드는 함수를 종료하기 때문에 그 이하 명령은 실행되지 않습니다.
+
+```js
+function hello() {
+  return "Hello~"; // 함수 종료
+  console.log("Wow!"); // 동작하지 않음!
+}
+console.log(hello()); // 'Hello~'
+```
+
+`return` 키워드를 사용하지 않거나 반환 데이터를 생략하면, `undefined`가 반환됩니다.
+
+```js
+function hello1() {}
+function hello2() {
+  return;
+}
+
+console.log(hello1()); // undefined
+console.log(hello2()); // undefined
+```
+
+```js
+function plus(num) {
+  if (!num) {
+    console.log("숫자를 입력해주세요!");
+    return 0;
+  }
+  return num + 1;
+}
+
+console.log(plus(2)); // 3
+console.log(plus(7)); // 8
+console.log(plus()); // '숫자를 입력해주세요!', '0
+```
+
+## 매개변수 패턴(Parameter patterns)
+
+기본값(Default value)
+
+```js
+function sum(a, b = 1) {
+  return a + b;
+}
+console.log(sum(2)); // 3
+```
+
+구조 분해 할당(Destructuring assignment)
+
+```js
+const user = {
+  name: "HEROPY",
+  age: 85,
+  // email: 'theseco@gmail.com'
+};
+
+function getName({ name }) {
+  return name;
+}
+function getEmail({ email = "이메일이 없습니다." }) {
+  return email;
+}
+
+console.log(getName(user)); // 'HEROPY'
+console.log(getEmail(user)); // '이메일이 없습니다.'
+```
+
+```js
+const fruits = ["Apple", "Banana", "Cherry"];
+const numbers = [1, 2, 3, 4, 5, 6, 7];
+
+function getSecondItem([, b]) {
+  return b;
+}
+console.log(getSecondItem(fruits)); // 'Banana'
+console.log(getSecondItem(numbers)); // 2
+```
+
+나머지 매개변수(Rest parameter)
+
+```js
+function sum(...rest) {
+  console.log(rest); // [1, 2, 3, 4, 5, 6, 7, 8]
+  return rest.reduce((acc, cur) => acc + cur);
+}
+
+const res = sum(1, 2, 3, 4, 5, 6, 7, 8);
+console.log(res); // 36
+```
+
+arguments 객체
+
+`arguments` 객체는 모든 함수 내에서 이용 가능한 지역 변수로, 함수의 모든 인수를 참조할 수 있습니다.
+
+```js
+function sum() {
+  let res = 0;
+  for (const item of arguments) {
+    res += item;
+  }
+  return res;
+}
+
+const res = sum(1, 2, 3, 4, 5, 6, 7, 8);
+console.log(res); // 36
+```
+
+## 화살표 함수(Arrow function)
+
+단순하고 간결한 문법으로 함수를 사용할 수 있습니다.  
+화살표 함수는 기본적으로 익명이며 표현식입니다.
+
+```js
+// 함수 표현
+const sum = function (a, b) {
+  return a + b;
+};
+
+// 화살표 함수
+const sum = (a, b) => a + b;
+```
+
+```js
+const log = function (c) {
+  console.log(c);
+};
+
+const log = (c) => console.log(c);
+```
+
+```js
+const a = () => {}; // 매개변수가 없을 경우
+const b = (x) => {}; // 매개변수 1개는 소괄호 생략 가능
+const c = (x, y) => {}; // 매개변수가 없거나 2개 이상은 소괄호를 생략 불가
+const d = (x) => {
+  return x * x;
+};
+const e = (x) => x * x; // 함수가 `return`으로 시작하면 `{}`와 `return` 생략 가능
+const f = (x) => {
+  // 함수가 `return`으로 시작하지 않으면 생략 불가
+  console.log(x * x);
+  return x * x;
+};
+const g = () => {
+  return { a: 1 };
+};
+const h = () => ({ a: 1 }); // 객체 데이터는 `{}` 기호를 사용하기 때문에 소괄호로 묶어야 함
+const i = () => {
+  return [1, 2, 3];
+};
+const j = () => [1, 2, 3];
+```
