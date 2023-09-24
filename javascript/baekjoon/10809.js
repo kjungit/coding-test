@@ -1,5 +1,5 @@
-const input = [["baekjoon"]];
-const str = input[0][0].split("");
+const input = ["baekjoon"];
+const str = input[0].split("");
 const arr = new Array(26).fill(-1);
 const alp = new Array(26)
   .fill()
