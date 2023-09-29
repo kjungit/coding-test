@@ -274,3 +274,306 @@ function App() {
   );
 }
 ```
+
+<br />
+
+## 🧑‍💻 Color Button(5) - 체크박스 기능 추가(퀴즈 풀이)
+
+- 요구사항: 체크박스의 체크가 on되면 버튼이 비활성화되게 해라
+- 가이드)
+  - `fiveEvent.click` 사용
+  - `toBeEnabled`와 그 반대 matcher인 `toBeDisabled()` 사용
+  - 새로운 테스트를 생성해서 작성
+
+```js
+// App.test.js
+test("체크박스를 2번 클릭하는 동안 버튼 활성화 및 체크박스 체크 유무 테스트", () => {
+  render(<App />);
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const checkbox = screen.getByRole("checkbox");
+
+  // click checkbox
+  fireEvent.click(checkbox);
+
+  expect(colorButton).toBeDisabled();
+  expect(checkbox).toBeChecked();
+
+  // click checkbox
+  fireEvent.click(checkbox);
+
+  expect(colorButton).toBeEnabled();
+  expect(checkbox).not.toBeChecked();
+});
+```
+
+```jsx
+// App.js
+
+function App() {
+  const [buttonColor, setButtonColor] = useState("red");
+  const [disabled, setDisabled] = useState(false); // (*)
+  const newButtonColor = buttonColor === "red" ? "blue" : "red";
+
+  return (
+    <div>
+      <button
+        style={{ backgroundColor: buttonColor, color: "#fff" }}
+        onClick={() => setButtonColor(newButtonColor)}
+        disabled={disabled} // (*)
+      >
+        Change to {newButtonColor}
+      </button>
+      <input
+        type="checkbox"
+        id="enable-button-checkbox" // (*) label을 위한 id 지정
+        checked={disabled} // (*)
+        aria-checked={disabled} // (*) 웹 접근성을 위한 속성
+        onChange={(e) => setDisabled(e.target.checked)} // (*)
+      />
+    </div>
+  );
+}
+```
+
+<br />
+
+## 🧑‍💻 Color Button(6) - 라벨이 있는 체크박스 찾기
+
+- 라벨이 있는 체크박스 찾을 때는 `getByRole()`의 두 번째 인자의 `name 옵션`을 통해 찾을 수 있다.
+- 그리고 App 컴포넌트에서 label 태그를 추가하면 된다. 이때 `htmlFor 속성의 값은 연결시킬 input의 id와 맞춰주면 된다.`
+
+```js
+test("체크박스를 2번 클릭하는 동안 버튼 활성화 및 체크박스 체크 유무 테스트", () => {
+  render(<App />);
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const checkbox = screen.getByRole("checkbox", { name: "Disable button" }); // (*)
+  // assert...
+});
+```
+
+```jsx
+<div>
+  // ...
+  <input
+    type="checkbox"
+    id="enable-button-checkbox"
+    checked={disabled}
+    aria-checked={disabled}
+    onChange={(e) => setDisabled(e.target.checked)}
+  />
+  <label htmlFor="enable-button-checkbox">Disable button</label>
+</div>
+```
+
+<br />
+
+## 🧑‍💻 Color Button(7) - 비활성화된 버튼 회색으로 봐꾸기(퀴즈 풀이)
+
+- 요구사항: 버튼이 비활성화되었을 때 이를 시각적으로 확인할 수 있으면 좋겠다. 즉 버튼 색깔을 회색으로 바꾸자.
+- 가이드)
+  - 테스트 플로우
+    1. 체크박스 클릭 -> 버튼 비활성화 -> 버튼 색깔(회색) -> 체크박스 클릭 -> 버튼 활성화 -> 버튼 색깔(빨강)
+    2. 버튼 클릭 -> 버튼 색깔(파랑) -> 체크박스 클릭 -> 버튼 비활성화 -> 버튼 색깔(회색) -> 체크박스 클릭 -> 버튼 색깔(파랑)
+  - 테스트 플로우가 2개이기 때문에 2개의 테스트 코드를 추가 작성
+
+```js
+// App.test.js
+test("비활성화 버튼의 색깔은 회색이고, 활성화되면 빨간색으로 돌아온다.", () => {
+  render(<App />);
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+
+  fireEvent.click(checkbox);
+  expect(colorButton).toHaveStyle({ backgroundColor: "gray" });
+
+  fireEvent.click(checkbox);
+  expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+});
+
+test("버튼을 클릭하면 버튼은 파란색이고, 비활성화하면 회색이다. 다시 활성화하면 파란색으로 돌아온다.", () => {
+  render(<App />);
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+
+  fireEvent.click(colorButton);
+  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+
+  fireEvent.click(checkbox);
+  expect(colorButton).toHaveStyle({ backgroundColor: "gray" });
+
+  fireEvent.click(checkbox);
+  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+});
+```
+
+<br />
+
+```js
+// App.js
+function App() {
+  // ...
+
+  return (
+    <div>
+      <button
+        // (*)
+        style={{
+          backgroundColor: disabled ? "gray" : buttonColor,
+          color: "#fff",
+        }}
+        onClick={() => setButtonColor(newButtonColor)}
+        disabled={disabled}
+      >
+        Change to {newButtonColor}
+      </button>
+      // ...
+    </div>
+  );
+}
+```
+
+## 🧑‍💻 Color Button(8) - 함수 유닛(Unit)테스트
+
+- 리액트 앱에서는 종종 `컴포넌트로부터 분리되어 있는 함수`를 발견할 수 있다. 이는 함수가 다수의 컴포넌트에 의해 사용이 되고 있기 때문일 수 있다. (예를 들어 유틸함수) 혹은 로직이 다소 복잡하기 때문에 컴포넌트 자체의 논리로부터 분리를 해야 하는 상황일 수도 있다.
+- 유닛 테스트를 권장하는 상황은 다음과 같다.
+  - 1. 기능 테스트를 통해 테스트를 하기에는 로직이 너무 복잡한 경우
+  - 2. 엣지 케이스가 너무 많은 경우이다.
+- 사실 지금 Color Button 프로젝트에서 유닛 테스트가 필요한 함수가 포함되어 있지 않다. 그래도 함수의 유닛 테스트의 개념과 원리를 살펴보자.
+
+<br />
+
+- 현재 유닛 테스트를 해볼 함수는 만약 우리가 색상으로 카멜케이스를 인자로 넣었을 경우 대문자마다 앞에 공백을 추가하는 함수(`replaceCamelWithSpace()`)를 추가하고 테스트해보자.
+- 그리고 이번 섹션에서 새로운 개념을 사용하는데 바로 `describe()`이다. describe는 테스트를 그룹화할 때 사용한다.
+
+<br />
+
+- `describe()`는 두 번째 인자로 콜백 함수를 갖는다. 그리고 그 콜백 함수 내부에 각각의 테스트들을 입력할 수 있다.
+- 참고로, 아래 예제는 어떤 특정 DOM을 불러오는 것이 아니고 특정 함수(`replaceCamelWithSpace()`)만을 테스트하기 때문에 바로 `단언(assert)`를 작성해주면 된다.
+
+```js
+// App.test.js
+import { replaceCamelWithSpace } from "./App";
+
+describe("카멜 케이스의 경우 대문자 앞의 공백을 띄운다", () => {
+  test("Works for no inner capital letters", () => {
+    expect(replaceCamelWithSpace("Red")).toBe("Red");
+  });
+
+  test("Works for one inner capital letters", () => {
+    expect(replaceCamelWithSpace("MidnightBlue")).toBe("Midnight Blue");
+  });
+
+  test("Works for mulitple inner capital letters", () => {
+    expect(replaceCamelWithSpace("MediumVioletRed")).toBe("Medium Violet Red");
+  });
+});
+```
+
+<br />
+
+- 이제 App 컴포넌트에서 replaceCamelWithSpace를 작성해주자. 참고로 함수 내부에서 정규표현식을 사용했다.
+- 작성한(`/\B([A-Z])\B/g`) 정규표현식이 의미하는 내용은 문자열에서 대문자를 만나면 또는 다수의 대문자를 만나면 매번 작업을 한다는 것을 의미한다.
+
+<br />
+
+```js
+// App
+export function replaceCamelWithSpace(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, " $1");
+}
+```
+
+- 위와 같이 작성하고 테스트를 돌려보면 제대로 테스트가 통과하는 것을 확인할 수 있다.
+
+<br />
+
+## 🧑‍💻 Color Button(9) - 스펙 변경을 통한 코드 수정
+
+- 기존 Color Button의 스펙은 red과 blue 색상을 다루었지만, 요구사항이 Midnight Blue, Medium Violet Red 색상으로 바뀌어야 한다면 스펙은 바뀔 것이다.
+- `앱의 스펙이 변경될 때마다 테스트를 업데이트해야 한다.`
+- 아래 test코드와 같이 기존의 red, blue로 작성된 코드를 모두 바꿔야 한다. 이런 작업이 매우 흥미로운 활동은 아니다라는 것은 확실하지만 프로그래머의 숙명이다.
+
+```js
+// App.test.js
+test("버튼 클릭을 통한 배경색 및 텍스트 변화 테스트", () => {
+  render(<App />);
+  const colorButton = screen.getByRole("button", {
+    name: "Change to Midnight Blue",
+  });
+
+  // expect the background color to be MediumVioletRed
+  expect(colorButton).toHaveStyle({ backgroundColor: "MediumVioletRed" });
+
+  // click button
+  fireEvent.click(colorButton);
+
+  // expect the background color to be MidnightBlue
+  expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
+
+  // expect the button text to be 'Change to MidnightBlue'
+  expect(colorButton.textContent).toBe("Change to Medium Violet Red");
+});
+```
+
+```js
+// App.js
+
+function App() {
+  const [buttonColor, setButtonColor] = useState("MediumVioletRed");
+  const [disabled, setDisabled] = useState(false);
+  const newButtonColor =
+    buttonColor === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
+
+  return (
+    <div>
+      <button
+        style={{
+          backgroundColor: disabled ? "gray" : buttonColor,
+          color: "#fff",
+        }}
+        onClick={() => setButtonColor(newButtonColor)}
+        disabled={disabled}
+      >
+        Change to {replaceCamelWithSpace(newButtonColor)}
+      </button>
+      <input
+        type="checkbox"
+        id="enable-button-checkbox"
+        checked={disabled}
+        aria-checked={disabled}
+        onChange={(e) => setDisabled(e.target.checked)}
+      />
+      <label htmlFor="enable-button-checkbox">Disable button</label>
+    </div>
+  );
+}
+```
+
+<br />
+
+## 🧑‍💻 Color Button(10) - 유닛 테스트를 하는 경우(추가 설명)
+
+- 복잡한 함수의 경우에는 유닛 테스트를 통해 가능한 모든 엣지 케이스를 확인할 수 있다. 따라서, 모든 엣지 케이스를 테스트하기 위해 굳이 컴포넌트를 활성화할 필요가 없다.
+- 그리고 중요하게 고려해야 할 사항이 하나 있는데, 기능 테스트의 실패 원인을 파악하려는 경우에 유닛 테스트가 유용하게 활용될 수 있다.
+- 종종 기능 테스트에서 다음과 같은 문제가 발생하곤 한다. 기능 테스트가 아주 높은 수준에 있어 코드를 리팩토링하게 되면 실패에 저항력이 생기는 것이다. 코드가 구현되는 구조 방식은 변경했으나 코드의 동작은 그대로인 경우가 여기에 해당된다. 이는 장점인데 이 말은 결국, 테스트의 복원력이 좋으며 동작 변경 여부와 상관없이 테스트의 본래 역할에 충실하다는 의미이다.
+- 하지만, 이런 경우 진단 또한 어려워진다. 테스트가 실패하는 원인이 기능 내의 광범위한 부분에 해당할 수 있기 때문이다. 따라서 복잡한 함수가 있고 해당 함수를 유닛 테스트하게 되면 그 함수에 대한 유닛 테스트가 실패할 시 해당 함수로 인해 테스트가 실패했다는 점을 알 수 있게 된다.
+- 테스트에 관련한 내용들은 과학이라기보다는 예술에 가깝다. 사람들에 따라 함수의 유닛 테스트 실행에 대한 의견은 갈리게 마련이고, 각 팀만의 스타일이 있다.
+
+<br />
+
+## 섹션 요약
+
+1. fiveEvent를 사용해 상호작용성을 테스트 했다. fiveEvent는 React의 테스팅 라이브러리에서 가져온 객체로서 click과 같은 메서드를 포함하고 있다.
+2. 다수의 jest-dom 단언(assert)를 사용했다
+
+- toBeEnabled()
+- toBeDisabled()
+- toBeChecked() -> 반대 기능의 단언이 없어서 앞에 not을 사용한다.
+- toHaveStyle()
+- toBe()
+
+3. getByRole에 name 옵션을 사용해 페이지에 어떤 체크박스 및 버튼을 참조하고 있는지 식별했다.
+4. Jest describe 전역 메서드를 사용해 논리적인 그룹으로 테스트를 그룹화 했다.
+5. 함수의 유닛 테스트를 진행했다. 함수를 유닛 테스트하는 방법과 어떤 경우에 적합한지 알아봤다. `보통 함수가 복잡한 경우에 사용한다.` 또한, 테스트하려는 모든 엣지 케이스에 대한 컴포넌트를 재렌더링할 필요가 없다.
+
+<br />
