@@ -144,3 +144,130 @@ export const handlers = [
 - 위에처럼 Handler를 작성했으면 이제 MSW 서버를 설정해보자.
 
 <br />
+
+### MSW Server 설정
+
+- [MSW - Integrate(Node)](https://mswjs.io/docs/getting-started/integrate/node)
+- MSW의 Integrate에대해서 알아볼건데 Intergrate는 브라우저와 노드 환경 간에 동일한 요청 처리기를 공유하는 것을 말한다. 참고로 여기서는 브라우저는 사용하지 않고 Node를 사용한다.
+- 노드는 Jest를 실행하면 실행된다.
+- 우선 `src/mocks`에 `server.js`파일을 생성한다. 그리고 아래와 같이 코드를 작성한다.
+
+```js
+// src/mocks/server.js
+import { setupServer } from "msw/node";
+import { handlers } from "./handlers";
+// This configures a request mocking server with the given request handlers.
+export const server = setupServer(...handlers);
+```
+
+- `setupServer(...handlers)`는 setupServer가 handlers와 함께 실행됨을 의미한다. 배열을 전개 연산자로 펼쳐서 배열의 각 요소를 별개의 인수로 만든다.
+- 마지막으로 MSW가 네트워크 요청을 가로채 핸들러에게 설정하 응답을 반환하도록 create-react-app(CRA) 을 구성해야 한다.
+- CRA를하면 생성되는 `src/setupTests.js`를 아래와 같이 수정한다.
+
+```js
+// src/setupTests.js
+// jest-dom때문에 jest-dom 단언을 사용할 수 있다.
+import "@testing-library/jest-dom";
+import server from "./mocks/server.js";
+
+// 테스트를 하기 전에 항상 서버가 수신을 대기하도록 한다.
+// 들어오는 모든 네트워크 요청을 실제 네트워크가 아닌 MSW로 라우팅함을 의미한다.
+beforeAll(() => server.listen());
+
+// 각 테스트가 끄탄면 핸들러를 서버를 정의했을 때의 핸들러로 재설정한다.
+// 결국 특정 테스트에 대한 특정 핸들러가 생긴다고 할 수 있다.
+// 다시 말해, 서버가 오류를 반환하면 앱에서 무슨 일이 생기는지 테스트하기 위해서 어떤 테스트에서 서버가 오류를 반환하게 할 예정이다.
+afterEach(() => server.resetHandlers());
+
+// 테스트가 끝나면 서버를 닫아 전부 깔끔하게 지운다.
+afterAll(() => server.close());
+```
+
+<br />
+
+## 🧑‍💻 MSW(2) - MSW로 스쿱 옵션 테스트하기
+
+- 스쿱 옵션을 테스트하기 전에 가장 먼저 entry 폴더 생성 후에 Options.js, OptionItem.js 컴포넌트를 생성한다.
+
+```js
+// entry/Options
+import React from "react";
+
+const Options = ({ optionType }) => {
+  return <div></div>;
+};
+
+export default Options;
+```
+
+```js
+// entry/OptionItem
+import React from "react";
+
+const OptionItem = () => {
+  return <div></div>;
+};
+
+export default OptionItem;
+```
+
+- 그리고 entry/tests 폴더에다 Option.test.js를 생성한다.
+- 참고로 Option 테스트는 간단하다. 서버에서 반환할 각 옵션의 이미지를 띄우는 것을 테스트 할 것이기 때문이다. 정확히 말하면 서버는 아니고 `MSW`이다.
+
+```js
+// entry/tests/Option.test.js
+import { render, screen } from "@testing-library/react";
+import Options from "../Options";
+
+test("display image for each scoop option from server", () => {
+  render(<Options optionType="scoops" />);
+
+  // find images
+  // 모든 이미지 요소를 역할로서 가져와야하기 때문에 getAllByRole 사용
+  // 모든 alt 텍스트가 scoop이라는 문자열로 끝나야 한다.
+  const scoopImages = screen.getAllByRole("img", {
+    name: /scoop$/i,
+  });
+  expect(scoopImages).toHaveLength(2);
+
+  // confirm alt text of images
+  // map을 이용해 모든 이미지에 대한 alt 텍스트를 얻을 수 있다.
+  const altText = scoopImages.map((el) => el.alt);
+
+  // 객체나 배열을 사용할 때는 toBe 말고 toEqual 사용해야 한다.
+  expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
+});
+```
+
+- 위에 처럼 Option 컴포넌트에 대한 코드를 작성했다. 몇 가지 살펴볼 내용은 주석으로 남겼다.
+- 하지만 위와 같이 코드를 작성해도 테스트를 진행하면 에러가 발생한다. 해당 에러를 해결하기 위해서는 비동기식으로 페이지에 나타날 비동기 작업을 할 때 `await`과 `findBy`를 사용해야 한다.
+- 그외에도 비동기 작업을 테스트 할 때는 `waitFor`라는 메서드도 사용할 수 있다.
+
+```js
+import { render, screen, waitFor } from "@testing-library/react";
+import Options from "../Options";
+
+test("display image for each scoop option from server", async () => {
+  render(<Options optionType="scoops" />);
+
+  // find images
+  // 모든 alt 텍스트가 scoop이라는 문자열로 끝나야 한다.
+  const scoopImages = await screen.findAllByRole("img", {
+    name: /scoop$/i,
+  });
+  expect(scoopImages).toHaveLength(2);
+
+  // confirm alt text of images
+  // map을 이용해 모든 이미지에 대한 alt 텍스트를 얻을 수 있다.
+  const scoopImageAltText = scoopImages.map((el) => el.alt);
+
+  // 객체나 배열을 사용할 때는 toBe 말고 toEqual 사용
+  expect(scoopImageAltText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
+});
+```
+
+- 리액트 코드는 sundaes-on-demand-client 프로젝트의 `pages/entry/Options`, `OptionItem`을 참고하자
+
+<br />
+
+<br />
