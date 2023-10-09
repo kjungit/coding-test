@@ -93,3 +93,124 @@ test("display image for each scoop option from server", async () => {
 - 이를 위와같이 test-utils/testing-library-utils를 import해서 사용하면 된다.
 
 <br />
+
+## 🧑‍💻 Provider(4) - update toppings subtotal
+
+- scoops, toppings 의 subTotal을 구하는 테스트는 거의 맥락이 비슷하다.
+
+```js
+test("update toppings subtotal when toppings change", async () => {
+  // 토핑 Subtotal초기 값 0 테스트
+  render(<Options optionType={"toppings"} />);
+  // exact가 false이면 꼭 모든 글자가 정확히 맞을 필요없다. 기본값은 true
+  const toppingsSubtotal = screen.getByText("toppings total: $", {
+    exact: false,
+  });
+
+  expect(toppingsSubtotal).toHaveTextContent("0.00");
+
+  // 한 옵션에 대한 박스를 찾아 체크하고 업데이트된 부분 합계에 단언(2개)
+  const CherriesCheckbox = await screen.findByRole("checkbox", {
+    name: "Cherries",
+  });
+  const GummiCheckbox = await screen.findByRole("checkbox", {
+    name: "M&Ms",
+  });
+
+  userEvent.click(CherriesCheckbox); // 1.5달러 증가
+  await waitFor(() => expect(toppingsSubtotal).toHaveTextContent("1.50"));
+
+  userEvent.click(GummiCheckbox); // 1.5달러 증가
+  await waitFor(() => expect(toppingsSubtotal).toHaveTextContent("3.00"));
+
+  userEvent.click(CherriesCheckbox); // 1.5달러 감소
+  await waitFor(() => expect(toppingsSubtotal).toHaveTextContent("1.50"));
+});
+```
+
+<br />
+
+## 🧑‍💻 Provider(5) - 총계(Grand total)
+
+```js
+describe("grand total", () => {
+  test("grand total updates properly if scoop is added first", async () => {
+    render(<OrderEntry />);
+
+    const grandTotal = screen.getByRole("heading", {
+      name: /grand total: \$/i,
+    });
+    const vanillaInput = await screen.findByRole("spinbutton", {
+      name: "Vanilla",
+    });
+    const CherriesCheckbox = await screen.findByRole("checkbox", {
+      name: "Cherries",
+    });
+
+    // scoop add
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "2"); // 4달러 증가
+    await waitFor(() => expect(grandTotal).toHaveTextContent("4.00"));
+
+    // topping add
+    userEvent.click(CherriesCheckbox); // 1.5달러 증가
+    await waitFor(() => expect(grandTotal).toHaveTextContent("5.50"));
+  });
+  test("grand total updates properly if topping is added first", async () => {
+    render(<OrderEntry />);
+
+    const grandTotal = screen.getByRole("heading", {
+      name: /grand total: \$/i,
+    });
+    const vanillaInput = await screen.findByRole("spinbutton", {
+      name: "Vanilla",
+    });
+    const CherriesCheckbox = await screen.findByRole("checkbox", {
+      name: "Cherries",
+    });
+
+    // topping add
+    userEvent.click(CherriesCheckbox); // 1.5달러 증가
+    await waitFor(() => expect(grandTotal).toHaveTextContent("1.50"));
+
+    // scoop add
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "2"); // 4달러 증가
+    await waitFor(() => expect(grandTotal).toHaveTextContent("5.50"));
+  });
+
+  test("grand total updates properly if item is removed", async () => {
+    render(<OrderEntry />);
+
+    const grandTotal = screen.getByRole("heading", {
+      name: /grand total: \$/i,
+    });
+    const vanillaInput = await screen.findByRole("spinbutton", {
+      name: "Vanilla",
+    });
+    const CherriesCheckbox = await screen.findByRole("checkbox", {
+      name: "Cherries",
+    });
+
+    // topping add
+    userEvent.click(CherriesCheckbox); // 1.5달러 증가
+
+    // scoop add
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "2"); // 4달러 증가
+
+    // scoop remove
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "1"); // 2달러 감소
+
+    await waitFor(() => expect(grandTotal).toHaveTextContent("3.50"));
+
+    // topping remove
+    userEvent.click(CherriesCheckbox); // 1.5달러 감소
+
+    await waitFor(() => expect(grandTotal).toHaveTextContent("2.00"));
+  });
+});
+```
+
+<br />
