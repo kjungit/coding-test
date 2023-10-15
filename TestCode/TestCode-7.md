@@ -171,3 +171,20 @@ console.log(mockFn("Dale")); // I am Dale!
 ```
 
 - 뿐만 아니라 `mockImplementation(구현 코드)` 함수를 이용하면 아예 해당 함수를 통째로 즉석해서 재구현해버릴 수도 있습니다.
+
+### mock 함수 사용 이유
+
+- 테스트를 작성할 때 mock 함수가 유용한 이유는 mock 함수는 자신이 어떻게 호출되었는지 모두 기억한다는 점이다.
+
+```js
+mockFn("a");
+mockFn(["b", "c"]);
+
+expect(mockFn).toBeCalledTimes(2);
+expect(mockFn).toBeCalledWith("a");
+expect(mockFn).toBeCalledWith(["b", "c"]);
+```
+
+- 위와 같이 mock 함수 용 설계된 Jest Matcher인 `toBeCalled` 함수를 사용하면 mock 함수가 몇번 `호출`되었고 `인자`로 무엇이 넘어왔었는지를 검증할 수 있습니다.
+
+<br />
