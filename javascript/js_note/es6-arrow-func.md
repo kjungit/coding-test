@@ -122,3 +122,33 @@ let 오브젝트1 = {
 ---
 
 <br>
+
+## :hammer_and_wrench: 용어 공부
+
+### :gear: 입출력기능
+
+<br>
+
+2를 집어넣으면 x + 2를 출력해주는 함수를 어떻게 만들어쓸까요?
+
+<br>
+
+```js
+function 더해주세요(x) {
+  return x + 2;
+}
+```
+
+<br>
+
+위와 같은 문법을 이용해서 만들어 사용합니다. 함수의 소괄호안에는 `input` 역할을 하는 `파라미터`가 있고 <br>
+
+함수내에 `return` 이라는 것은 `output` 역할을 하는 키워드입니다. 그럼 이제 더해주세요(2); 이렇게 사용하면? <br>
+
+4가 이 자리에 남게 됩니다. 소괄호에 뭔가 집어넣으면 return을 이용해 뭔가 뱉어내는 것. 이게 바로 함수의 입출력 기능입니다.
+
+<br>
+
+## 참고
+
+- [코딩애플, Arrow function은 function을 대체하는 신문법이 아님](https://codingapple.com/unit/es6-3-arrow-function-why/)
