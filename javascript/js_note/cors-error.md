@@ -41,3 +41,27 @@
 ### :gear: 동일출처정책
 
 - 동일 출처 정책(Same-Origin Policy)란? 어떤 출처에서 불러온 문서나 스크립트가 다른 출처에서 가져온 리소스와 상호작용하는 것을 제한하는 중요한 보안 방식입니다. 동일 출처 정책은 잠재적으로 해로울 수 있는 문서를 분리함으로써 공격받을 수 있는 경로를 줄여줍니다.
+
+### :gear: jsonp방식
+
+- 웹 브라우저에서 css나 js 같은 리소스 파일들은 동일 출처 정책에 영향을 받지 않고 로딩이 가능합니다. 이런 점을 응용해서 외부 서버에서 읽어온 js 파일을 json으로 바꿔주는 일종의 편법적인 방법입니다. 단점은 리소스 파일을 GET 메서드로 읽어오기 때문에 GET 방식의 API만 요청이 가능합니다.
+
+### :gear: 서버에서
+
+- (용어설명이 아닙니다.) 서버에서 CORS 요청 핸들링하기, 서버로 날아온 preflight 요청을 처리하며 웹 브라우저에서 실제 요청을 날릴 수 있도록 해줍니다.
+
+### 모든 외부 도메인에서 모든 요청을 허용할 경우 처리
+
+가장 쉬운 방법으로 모든 요청을 허용하는 방식입니다.
+
+preflight 요청을 받기 위해 OPTIONS 메서드의 요청을 받아서 컨트롤해야 합니다. 모든 요청의 응답에 아래 header를 추가합니다.
+
+```
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS
+Access-Control-Max_Age: 3600
+Access-Control-Allow-Headers: Origin,Accept,X-requested-With,Content-Type,Access-Control-Request-Method,Access-
+Control-Request-Headers,Authorization
+```
+
+<br>
