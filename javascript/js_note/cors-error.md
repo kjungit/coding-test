@@ -65,3 +65,22 @@ Control-Request-Headers,Authorization
 ```
 
 <br>
+
+`Access-Control-Allow-Origin`: 요청을 허용하는 출처, `'*'` 이면 모든 곳에 공개되어 있음을 의미합니다.
+<br>
+`Access-Control-Allow_Methods`: 요청을 허용하는 메서드, 기본값은 `GET`,`POST`라고 보면 됩니다. 이 헤더가 없으면 `GET`과 `POST`요청만 가능합니다. 만약 이 헤더가 지정되어 있으면, 클라이언트는 헤더값에 해당하는 메서드일 경우에만 실제 요청을 시도하게 됩니다.
+<br>
+`Access-Control-Max-Age`: 클라이언트에서 preflight의 요청 결과를 저장할 기간을 지정. 클라이언트에서 preflight 요청의 결과를 저장하고 있을 시간입니다. 해당 시간 동안은 preflight 요청을 다시 하지 않게 됩니다.
+<br>
+`Access-Control-Allow_Headers` : 요청을 허용하는 헤더
+
+<br>
+
+웹 브라우저의 스크립트 엔진에서 preflight 요청 응답으로 `Access-Control-Allow-Origin` header에 `"*"` 값이 있으면 모든 도메인에서의 요청을 허용하는 것으로 판단합니다. ajax 요청이 실패하면서 발생하는 메시지는 바로 preflight요청을 날린 응답 메시지에 `Access-Control-Allow-Origin` 헤더가 없어서 요청이 허용되지 않는다는 뜻입니다.
+
+<br>
+
+## 참고
+
+- [brunch, javascript ajax 크로스도메인 요청 - CORS](https://brunch.co.kr/@adrenalinee31/1)
+- [MDN, 동일 출처 정책](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy)
