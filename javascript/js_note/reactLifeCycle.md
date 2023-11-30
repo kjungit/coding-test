@@ -14,3 +14,42 @@
 <br>
 
 <br>
+
+## 마운트(생성)
+
+컴포넌트의 [인스턴스](gear-)가 생성되어, DOM에 삽입될 때 순서대로 호출됩니다.
+
+- `constructor()`
+- getDerivedStateFromProps()
+- `render()`
+- `componentDidMount()`
+
+<br>
+
+## 업데이트
+
+props나 state가 변경되면 렌더(갱신)가 진행되며 순서대로 호출됩니다.
+
+- getDerivedStateFromProps()
+- shouldComponentUpdate()
+- `render()`
+- getSnapshotBeforeUpdate()
+- `componentDidUpdate()`
+
+<br>
+
+## 마운트 해제(제거)
+
+아래 메서드는 컴포넌트가 DOM에서 제거될 때 호출됩니다.
+
+- `componentWillUnmount()`
+
+<br>
+
+<br>
+
+위에 명시된 자주 사용되는 생명 주기 메서드에 대해 간략한 소개를 하겠습니다.
+
+<br>
+
+<br>
