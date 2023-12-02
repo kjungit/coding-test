@@ -80,3 +80,119 @@ const example = () => {
 > 함수형 컴포넌트에서는 render를 안쓰고 컴포넌트를 렌더링할 수 있습니다.
 
 <br>
+
+### `constructor(props)`
+
+메서드를 바인딩하거나 state를 초기화하는 작업이 없다면 constructor(생성자)가 없어도 됩니다.
+
+- react 컴포넌트의 생성자는 해당 컴포넌트가 마운트되기 전에 호출됩니다.
+- 생성자를 구현하면, this.props가 생성자 내에서 정의되도록 super(props)를 호출해야 합니다.
+- state의 값을 변경하고자 한다면 constructor() 외부에서 this.setState()를 통해 수정해야 합니다.
+
+<br>
+
+```js
+// Class
+class Example extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { count: 0 };
+}
+
+// Hooks
+const Example = () => {
+    const [count,setCount] = useState(0);
+}
+```
+
+> 클래스형에서는 초기 state를 정할 때 constructor를 사용해야 합니다. 하지만 훅에서는 useState hook을 사용하면 초기 상태를 쉽게 설정해줄 수 있습니다.
+
+<br>
+
+### `componentDidMount()`
+
+컴포넌트가 마운트된 직후에 호출됩니다.
+
+- DOM 노드가 있어야 하는 초기화 작업이 이루어지면 좋습니다.
+- 외부에서 데이터를 불러와야 한다면 네트워크 요청을 보내기 좋은 위치입니다.
+
+<br>
+
+```js
+// Class
+class Example extends React.Component {
+    componentDidMount() {
+        ...
+    }
+}
+
+// Hooks
+const Example = () => {
+    useEffect(() => {
+        ...
+    }, []);
+}
+```
+
+> 함수형 Hooks 에서는 useEffect의 [] 의존성 배열을 비워야지만 똑같은 메소드를 구현할 수 있습니다.
+
+<br>
+
+### `componentDidUpdate()`
+
+갱신(렌더)가 일어난 직후에 호출되며 최초 렌더링에서는 호출되지 않습니다.
+
+<br>
+
+```js
+// Class
+class Example extends React.Component {
+    componentDidUpdate(prevProps, prevState) {
+        ...
+    }
+}
+
+// Hooks
+const Example = () => {
+    useEffect(() => {
+        ...
+    });
+}
+```
+
+<br>
+
+### `componentWillUnmount()`
+
+컴포넌트가 마운트 해제되어 제거되기 직전에 호출됩니다.
+
+- 타이머 제거, 네트워크 요청 취소, componentDidMount()에서 생성된 작업 등을 정리할 때 사용됩니다.
+- 실행 직후 컴포넌트는 렌더링되지 않으므로 setState()를 호출하면 안됩니다.
+
+<br>
+
+```js
+// Class
+class Example extends React.Component {
+    coomponentWillUnmount() {
+        ...
+    }
+}
+
+// Hooks
+const Example = () => {
+    useEffect(() => {
+        return () => {
+            ...
+        }
+    }, []);
+}
+```
+
+> 함수형 컴포넌트에서는 useEffect CleanUp 함수를 통해 해당 메서드를 구현할 수 있습니다.
+
+<br>
+
+---
+
+<br>
