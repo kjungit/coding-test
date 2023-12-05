@@ -35,3 +35,18 @@
 ---
 
 <br>
+
+## :hammer_and_wrench: 용어 공부
+
+### :gear: CommonJS
+
+CommonJS 란? 웹 브라우저 밖의 자바스크립트를 위한 모듈 생태계의 규칙을 설립하기 위한 프로젝트입니다.
+<br>
+개념은 간단합니다. `'.js'` 파일 간의 어떻게 의존성을 가지게 할지 정해주는 것입니다. commonJS라는 개념이 존재하는 이유는 자바스크립트를 범용적으로 모듈화를 높이기 위해서입니다.
+
+<br>
+
+## 참고
+
+- [require ⚔️ import (CommonJs와 ES6) 차이](https://inpa.tistory.com/entry/NODE-%F0%9F%93%9A-require-%E2%9A%94%EF%B8%8F-import-CommonJs%EC%99%80-ES6-%EC%B0%A8%EC%9D%B4-1)
+- [Server & Node [CommonJS]](https://velog.io/@sksgur3217/Server-Node-CommonJS)
