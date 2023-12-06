@@ -6,9 +6,9 @@ const alp = new Array(26)
   .map((_, i) => String.fromCharCode(i + 97))
   .join("");
 
+
 str.filter((item, i) => {
   const res = alp.indexOf(item);
   arr[res] = str.indexOf(item);
 });
 
-console.log(arr);
