@@ -8,8 +8,8 @@ let input = [];
 
 rl.on('line', function (line) {
     input = line.split(' ');
-    console.log(input.join(""))
 }).on('close', function () {
-    str1 = input[0];
-    str2 = input[1];
+  console.log(input.join(''));
 });
+
+
