@@ -10,3 +10,4 @@ def make_num_one(num):
         
 
 print(make_num_one(10)) # 3
+
