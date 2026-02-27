@@ -1,3 +1,3 @@
 function solution(order) {
-    return String(order).split("").filter(v => ["3", "6", "9"].includes(v)).length;
+    return (order.toString().match(/[369]/g) ?? []).length
 }
