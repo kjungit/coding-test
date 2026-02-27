@@ -1,7 +1,3 @@
 function solution(order) {
-    let cnt = 0;
-    String(order).split("").forEach((i) => {
-        if([3, 6, 9.].includes(Number(i))) cnt++
-    })
-    return cnt;
+    return String(order).split("").filter(v => ["3", "6", "9"].includes(v)).length;
 }
