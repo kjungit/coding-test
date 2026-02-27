@@ -1,4 +1,4 @@
 function solution(age) {
-    const en = "abcdefghijklmnpqrstuvwxyz"
+    const en = "abcdefghij"
     return String(age).split("").map(v => en[v]).join("");
 }
