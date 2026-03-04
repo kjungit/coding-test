@@ -1,10 +1,13 @@
 function solution(s) {
-    const arr = s.split(" ")
-    return arr.reduce((acc, cur, i) => {
-        if (cur === 'Z') {
-            return Number(acc) - Number(arr[i - 1])
+    const res = [] 
+    s = s.split(" ")
+    for (v of s) {
+        if (v === "Z") {
+            res.pop()
         } else {
-            return Number(acc) + Number(cur)
+            res.push(+v)
         }
-    }, 0)
+    }
+    
+    return res.reduce((a, c) => a + c, 0)
 }
