@@ -1,6 +1,6 @@
 # [level 0] 문자열의 뒤의 n글자 - 181910 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181910?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181910) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 10월 06일 21:30:07
+2026년 03월 30일 10:31:31
 
 ### 문제 설명
 
