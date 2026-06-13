@@ -5,35 +5,34 @@ class Solution {
     public int solution(int[] queue1, int[] queue2) {
         Deque<Integer> deque1 = toDeque(queue1);
         Deque<Integer> deque2 = toDeque(queue2);
-        long totalSum = IntStream.concat(Arrays.stream(queue1), Arrays.stream(queue2)).asLongStream().sum();
+        
+        long sum1 = getSum(queue1);
+        long sum2 = getSum(queue2);
+        long total = sum1 + sum2;
 
-        if (totalSum % 2 != 0) {
+        if (total % 2 != 0) {
             return -1;
         }
         
-        long half = totalSum / 2;
+        long half = total / 2;
         int cnt = 0;
         int max = (queue1.length + queue2.length) * 2;
         
-        long deque1Sum = calculateSum(deque1);
-        long deque2Sum = calculateSum(deque2);
-        
-        
         while (cnt <= max) {
-            if (deque1Sum == half && deque2Sum == half) {
+            if (sum1 == half && sum2 == half) {
                 return cnt;
             }
             
-            if (deque1Sum > deque2Sum) {
+            if (sum1 > half) {
                 int val = deque1.removeFirst();
                 deque2.addLast(val);
-                deque2Sum += val;
-                deque1Sum -= val;
+                sum2 += val;
+                sum1 -= val;
             } else {
                 int val = deque2.removeFirst();
                 deque1.addLast(val);
-                deque1Sum += val;
-                deque2Sum -= val;
+                sum1 += val;
+                sum2 -= val;
             }
             cnt++;
         }
@@ -41,15 +40,11 @@ class Solution {
         return -1;
     }
     
-    public long calculateSum(Deque<Integer> list) {
-        int[] arr = list.stream().mapToInt(Integer::intValue).toArray();
-        
+    public long getSum(int[] arr) {
         long n = 0;
-        
         for (int num : arr) {
             n += num;
         }
-        
         return n;
     }
     
